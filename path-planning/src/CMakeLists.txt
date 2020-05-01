@@ -3,6 +3,7 @@ add_library("path-planning"
     obstacle.cpp
     obstacle_rectangle.cpp
     obstacle_circle.cpp
+    rectangular_zone.cpp
 )
 
 target_include_directories("path-planning" 

@@ -1,10 +1,14 @@
 #pragma once
 
-namespace pathmapping::geometry {
+namespace pathplanning::geometry {
 
     class Point {
     public:
         Point(double x, double y);
+
+        bool operator==(const Point& other) const;
+
+        double euclidian_distance(const Point& other) const;
 
         double getX() const;
         double getY() const;

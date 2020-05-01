@@ -1,18 +1,26 @@
 #pragma once 
 
-#include "obstacle.hpp"
+#include <path-planning/obstacle.hpp>
 
-namespace pathmapping::map {
+namespace pathplanning::map {
 
     class RectangleObstacle: public Obstacle {
     public:
-        RectangleObstacle(const geometry::Point& a, const geometry::Point& b);
+        RectangleObstacle(const geometry::Point& point, const geometry::Point& opposite);
 
-        ContainedInfo containsZone(const geometry::RectangularZone& area) const override;
+        SurfaceRelationship contains(const geometry::RectangularZone& area) const override;
 
     private:
-        const geometry::Point a;
-        const geometry::Point b;
+        bool containsFully(const geometry::RectangularZone& area) const;
+        bool overlap(const geometry::RectangularZone& area) const;
+
+        double getLeftLine() const;
+        double getRightLine() const;
+        double getTopLine() const;
+        double getBottomLine() const;
+
+        const geometry::Point point;
+        const geometry::Point opposite;
     };
 
 }
