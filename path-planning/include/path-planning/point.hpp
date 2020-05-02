@@ -10,8 +10,8 @@ namespace pathplanning::geometry {
 
         double euclidian_distance(const Point& other) const;
 
-        double getX() const;
-        double getY() const;
+        double get_x() const;
+        double get_y() const;
     private:
         double x;
         double y;

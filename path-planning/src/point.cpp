@@ -16,11 +16,11 @@ namespace pathplanning::geometry {
         return std::sqrt(std::pow(x - other.x, 2) + std::pow(y - other.y, 2));
     }
 
-    double Point::getX() const {
+    double Point::get_x() const {
         return x;
     }
 
-    double Point::getY() const {
+    double Point::get_y() const {
         return y;
     }
 

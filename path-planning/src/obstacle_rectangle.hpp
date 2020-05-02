@@ -11,13 +11,13 @@ namespace pathplanning::map {
         SurfaceRelationship contains(const geometry::RectangularZone& area) const override;
 
     private:
-        bool containsFully(const geometry::RectangularZone& area) const;
+        bool contains_fully(const geometry::RectangularZone& area) const;
         bool overlap(const geometry::RectangularZone& area) const;
 
-        double getLeftLine() const;
-        double getRightLine() const;
-        double getTopLine() const;
-        double getBottomLine() const;
+        double get_left_line() const;
+        double get_right_line() const;
+        double get_top_line() const;
+        double get_bottom_line() const;
 
         const geometry::Point point;
         const geometry::Point opposite;
