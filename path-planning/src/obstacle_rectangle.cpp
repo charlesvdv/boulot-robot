@@ -7,7 +7,7 @@ namespace pathplanning::map {
         point(point), opposite(opposite) {}
 
     SurfaceRelationship RectangleObstacle::contains(const geometry::RectangularZone& zone) const {
-        if (containsFully(zone)) {
+        if (contains_fully(zone)) {
             return SurfaceRelationship::CONTAINS;
         } else if (overlap(zone)) {
             return SurfaceRelationship::OVERLAP;
@@ -15,39 +15,39 @@ namespace pathplanning::map {
         return SurfaceRelationship::DISJOINT;
     }
 
-    bool RectangleObstacle::containsFully(const geometry::RectangularZone& zone) const {
-        if (getLeftLine() < zone.getLeftLine() && getRightLine() > zone.getRightLine() &&
-                getBottomLine() < zone.getBottomLine() && getTopLine() > zone.getTopLine()) {
+    bool RectangleObstacle::contains_fully(const geometry::RectangularZone& zone) const {
+        if (get_left_line() < zone.get_left_line() && get_right_line() > zone.get_right_line() &&
+                get_bottom_line() < zone.get_bottom_line() && get_top_line() > zone.get_top_line()) {
             return true;
         }
         return false;
     }
 
     bool RectangleObstacle::overlap(const geometry::RectangularZone& zone) const {
-        if (getRightLine() < zone.getLeftLine() || getLeftLine() > zone.getRightLine()) {
+        if (get_right_line() < zone.get_left_line() || get_left_line() > zone.get_right_line()) {
             // If x coordinates don't cross, it's impossible to have an overlap
             return false;
         }
-        if (getTopLine() < zone.getBottomLine() || getBottomLine() > zone.getTopLine()) {
+        if (get_top_line() < zone.get_bottom_line() || get_bottom_line() > zone.get_top_line()) {
             // If y coordinates don't cross, it's impossible to have an overlap
             return false;
         }
         return true;
     }
 
-    double RectangleObstacle::getLeftLine() const {
-        return std::min(point.getX(), opposite.getX());
+    double RectangleObstacle::get_left_line() const {
+        return std::min(point.get_x(), opposite.get_x());
     }
 
-    double RectangleObstacle::getRightLine() const {
-        return std::max(point.getX(), opposite.getX());
+    double RectangleObstacle::get_right_line() const {
+        return std::max(point.get_x(), opposite.get_x());
     }
 
-    double RectangleObstacle::getBottomLine() const {
-        return std::min(point.getY(), opposite.getY());
+    double RectangleObstacle::get_bottom_line() const {
+        return std::min(point.get_y(), opposite.get_y());
     }
 
-    double RectangleObstacle::getTopLine() const {
-        return std::max(point.getY(), opposite.getY());
+    double RectangleObstacle::get_top_line() const {
+        return std::max(point.get_y(), opposite.get_y());
     }
 }
