@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "obstacle_rectangle.hpp"
 
 namespace pathplanning::map {
@@ -15,7 +16,7 @@ namespace pathplanning::map {
     }
 
     bool RectangleObstacle::containsFully(const geometry::RectangularZone& zone) const {
-        if (getLeftLine() < zone.getLeftLine() && getRightLine() > zone.getRightLine() && 
+        if (getLeftLine() < zone.getLeftLine() && getRightLine() > zone.getRightLine() &&
                 getBottomLine() < zone.getBottomLine() && getTopLine() > zone.getTopLine()) {
             return true;
         }
