@@ -1,15 +1,16 @@
 #pragma once
 
-#include <obstacle.hpp>
-#include <point.hpp>
+#include <path-planning/obstacle.hpp>
+#include <path-planning/point.hpp>
 
-namespace pathmapping::map {
+namespace pathplanning::map {
 
     class CircleObstacle: public Obstacle {
     public:
         CircleObstacle(const geometry::Point& center, double radius);
 
-        ContainedInfo containsZone(const geometry::RectangularZone& area) const override;
+        SurfaceRelationship contains(const geometry::RectangularZone& area) const override;
+
     private:
         const geometry::Point center;
         double radius;

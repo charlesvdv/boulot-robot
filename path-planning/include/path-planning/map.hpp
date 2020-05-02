@@ -6,7 +6,7 @@
 #include "point.hpp"
 #include "obstacle.hpp"
 
-namespace pathmapping::map {
+namespace pathplanning::map {
 
 class Map {
 public:
