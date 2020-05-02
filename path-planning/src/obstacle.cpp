@@ -12,4 +12,6 @@ namespace pathplanning::map {
         return std::make_unique<CircleObstacle>(center, radius);
     }
 
+    Obstacle::~Obstacle() {}
+
 }

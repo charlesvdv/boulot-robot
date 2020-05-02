@@ -10,7 +10,7 @@ namespace pathplanning::map {
 
 class Map {
 public:
-    static std::unique_ptr<Map> make_rectangular(const geometry::Point& p, std::vector<std::unique_ptr<Obstacle>> obstacles);
+    static std::unique_ptr<Map> make_rectangular(double lenght, double height, std::vector<std::unique_ptr<Obstacle>> obstacles);
 };
 
 }
