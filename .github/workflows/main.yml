@@ -18,3 +18,7 @@ jobs:
 
     - name: Build
       run: cmake --build build
+    
+    - name: Test
+      run: ctest
+      working-directory: ./build
