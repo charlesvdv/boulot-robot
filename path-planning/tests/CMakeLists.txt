@@ -1,4 +1,5 @@
 add_executable("path-planning-test"
+    test_obstacle_circle.cpp
     test_obstacle_rectangle.cpp
     main.cpp)
 

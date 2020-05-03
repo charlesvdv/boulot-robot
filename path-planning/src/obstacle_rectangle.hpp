@@ -1,6 +1,7 @@
 #pragma once 
 
 #include <path-planning/obstacle.hpp>
+#include <path-planning/point.hpp>
 
 namespace pathplanning::map {
 
@@ -8,7 +9,7 @@ namespace pathplanning::map {
     public:
         RectangleObstacle(const geometry::Point& point, const geometry::Point& opposite);
 
-        SurfaceRelationship contains(const geometry::RectangularZone& area) const override;
+        SurfaceRelationship contains(const geometry::RectangularZone& zone) const override;
 
     private:
         bool contains_fully(const geometry::RectangularZone& area) const;
