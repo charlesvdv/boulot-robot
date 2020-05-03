@@ -5,62 +5,62 @@
 namespace pathplanning::map {
 
     template<class T>
-    QuadtreeNodeChildren<T>::QuadtreeNodeChildren(QuadtreeNodeChildren<T>&& north_west, QuadtreeNodeChildren<T>&& north_east,
-        QuadtreeNodeChildren<T>&& south_east, QuadtreeNodeChildren<T>&& south_west): 
-            north_west(north_west), north_east(north_east), south_east(south_east), south_west(south_west) {}
+    QuadtreeNodeChildren<T>::QuadtreeNodeChildren(QuadtreeNodeChildren<T>&& top_right, QuadtreeNodeChildren<T>&& top_left,
+        QuadtreeNodeChildren<T>&& bottom_left, QuadtreeNodeChildren<T>&& bottom_right): 
+            top_right(top_right), top_left(top_left), bottom_left(bottom_left), bottom_right(bottom_right) {}
 
 
     template<class T>
-    const QuadtreeNode<T>& QuadtreeNodeChildren<T>::get_north_west_node() const {
-        return north_west;
+    const QuadtreeNode<T>& QuadtreeNodeChildren<T>::get_top_right_node() const {
+        return top_right;
     }
 
     template<class T>
-    const QuadtreeNode<T>& QuadtreeNodeChildren<T>::get_north_east_node() const {
-        return north_east;
+    const QuadtreeNode<T>& QuadtreeNodeChildren<T>::get_top_left_node() const {
+        return top_left;
     }
 
     template<class T>
-    const QuadtreeNode<T>& QuadtreeNodeChildren<T>::get_south_east_node() const {
-        return south_east;
+    const QuadtreeNode<T>& QuadtreeNodeChildren<T>::get_bottom_left_node() const {
+        return bottom_left;
     }
 
     template<class T>
-    const QuadtreeNode<T>& QuadtreeNodeChildren<T>::get_south_west_node() const {
-        return south_west;
+    const QuadtreeNode<T>& QuadtreeNodeChildren<T>::get_bottom_right_node() const {
+        return bottom_right;
     }
 
     template<class T>
-    typename QuadtreeNodeChildren<T>::Builder& QuadtreeNodeChildren<T>::Builder::with_north_west(const QuadtreeNode<T> node) {
-        north_west = node;
+    typename QuadtreeNodeChildren<T>::Builder& QuadtreeNodeChildren<T>::Builder::with_top_right(const QuadtreeNode<T> node) {
+        top_right = node;
         return *this;
     }
 
     template<class T>
-    typename QuadtreeNodeChildren<T>::Builder& QuadtreeNodeChildren<T>::Builder::with_north_east(const QuadtreeNode<T> node) {
-        north_east = node;
+    typename QuadtreeNodeChildren<T>::Builder& QuadtreeNodeChildren<T>::Builder::with_top_left(const QuadtreeNode<T> node) {
+        top_left = node;
         return *this;
     }
 
     template<class T>
-    typename QuadtreeNodeChildren<T>::Builder& QuadtreeNodeChildren<T>::Builder::with_south_west(const QuadtreeNode<T> node) {
-        south_west = node;
+    typename QuadtreeNodeChildren<T>::Builder& QuadtreeNodeChildren<T>::Builder::with_bottom_right(const QuadtreeNode<T> node) {
+        bottom_right = node;
         return *this;
     }
 
     template<class T>
-    typename QuadtreeNodeChildren<T>::Builder& QuadtreeNodeChildren<T>::Builder::with_south_east(const QuadtreeNode<T> node) {
-        south_east = node;
+    typename QuadtreeNodeChildren<T>::Builder& QuadtreeNodeChildren<T>::Builder::with_bottom_left(const QuadtreeNode<T> node) {
+        bottom_left = node;
         return *this;
     }
 
     template<class T>
     QuadtreeNodeChildren<T> QuadtreeNodeChildren<T>::Builder::build() const {
-        if (!(north_west.has_value() && north_east.has_value() && south_east.has_value() && south_west.has_value())) {
+        if (!(top_right.has_value() && top_left.has_value() && bottom_left.has_value() && bottom_right.has_value())) {
             throw std::invalid_argument("QuadtreeNodeChildren::Builder must be filled completely");
         }
 
-        return QuadtreeNodeChildren<T>(north_west, north_east, south_east, south_west);
+        return QuadtreeNodeChildren<T>(top_right, top_left, bottom_left, bottom_right);
     }
 
 }

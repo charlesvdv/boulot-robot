@@ -43,36 +43,36 @@ namespace pathplanning::map {
     public:
         class Builder;
 
-        const QuadtreeNode<T>& get_north_west_node() const;
-        const QuadtreeNode<T>& get_north_east_node() const;
-        const QuadtreeNode<T>& get_south_east_node() const;
-        const QuadtreeNode<T>& get_south_west_node() const;
+        const QuadtreeNode<T>& get_top_right_node() const;
+        const QuadtreeNode<T>& get_top_left_node() const;
+        const QuadtreeNode<T>& get_bottom_left_node() const;
+        const QuadtreeNode<T>& get_bottom_right_node() const;
 
     private:
-        QuadtreeNodeChildren(QuadtreeNodeChildren<T>&& north_west, QuadtreeNodeChildren<T>&& north_east,
-            QuadtreeNodeChildren<T>&& south_east, QuadtreeNodeChildren<T>&& south_west);
+        QuadtreeNodeChildren(QuadtreeNodeChildren<T>&& top_right, QuadtreeNodeChildren<T>&& top_left,
+            QuadtreeNodeChildren<T>&& bottom_left, QuadtreeNodeChildren<T>&& bottom_right);
 
-        QuadtreeNode<T> north_west;
-        QuadtreeNode<T> north_east;
-        QuadtreeNode<T> south_east;
-        QuadtreeNode<T> south_west;
+        QuadtreeNode<T> top_right;
+        QuadtreeNode<T> top_left;
+        QuadtreeNode<T> bottom_left;
+        QuadtreeNode<T> bottom_right;
     };
 
     template<class T>
     class QuadtreeNodeChildren<T>::Builder {
     public:
-        Builder& with_north_west(const QuadtreeNode<T> node);
-        Builder& with_north_east(const QuadtreeNode<T> node);
-        Builder& with_south_west(const QuadtreeNode<T> node);
-        Builder& with_south_east(const QuadtreeNode<T> node);
+        Builder& with_top_right(const QuadtreeNode<T> node);
+        Builder& with_top_left(const QuadtreeNode<T> node);
+        Builder& with_bottom_right(const QuadtreeNode<T> node);
+        Builder& with_bottom_left(const QuadtreeNode<T> node);
 
         QuadtreeNodeChildren<T> build() const;
 
     private:
-        std::optional<QuadtreeNode<T>> north_west;
-        std::optional<QuadtreeNode<T>> north_east;
-        std::optional<QuadtreeNode<T>> south_east;
-        std::optional<QuadtreeNode<T>> south_west;
+        std::optional<QuadtreeNode<T>> top_right;
+        std::optional<QuadtreeNode<T>> top_left;
+        std::optional<QuadtreeNode<T>> bottom_left;
+        std::optional<QuadtreeNode<T>> bottom_right;
     };
 
 }
