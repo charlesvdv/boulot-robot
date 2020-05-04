@@ -4,6 +4,8 @@ add_library("path-planning"
     obstacle_rectangle.cpp
     obstacle_circle.cpp
     rectangular_zone.cpp
+    quadtree_node.cpp
+    quadtree_node_children.cpp
 )
 
 target_include_directories("path-planning" 
