@@ -27,6 +27,10 @@ namespace pathplanning::quadtree {
         SplittingNodeInfo(const geometry::Point& splitting_point):
             splitting_point(splitting_point) {}
 
+        SplittingNodeInfo(const geometry::Point& splitting_point, const T& value):
+            splitting_point(splitting_point), top_left_value(value), top_right_value(value),
+            bottom_left_value(value), bottom_right_value(value) {}
+
         SplittingNodeInfo& with_top_left_value(const T& value) {
             top_left_value = value;
             return *this;
@@ -117,6 +121,17 @@ namespace pathplanning::quadtree {
             return *value;
         }
 
+        void set_leaf_value(const T& value) {
+            if (get_type() != NodeType::LEAF) {
+                throw std::logic_error("Can not set leaf value when node is not a leaf");
+            }
+            this->value = value;
+        }
+
+        const BoundingBox& get_bounding_box() const {
+            return bounding_box;
+        }
+
         void split(const SplittingNodeInfo<T>& splitting_info) {
             if (get_type() == NodeType::BRANCH) {
                 throw std::logic_error("Can not split a branch node");
@@ -168,9 +183,11 @@ namespace pathplanning::quadtree {
     template<class T>
     class Branches {
     public:
-        // class Builder;
-
         const Node<T>& get_top_right_node() const {
+            return top_right;
+        }
+
+        Node<T>& get_top_right_node() {
             return top_right;
         }
 
@@ -178,12 +195,28 @@ namespace pathplanning::quadtree {
             return top_left;
         }
 
+        Node<T>& get_top_left_node() {
+            return top_left;
+        }
+
         const Node<T>& get_bottom_left_node() const {
+            return bottom_left;
+        }
+
+        Node<T>& get_bottom_left_node() {
             return bottom_left;
         }
 
         const Node<T>& get_bottom_right_node() const {
             return bottom_right;
+        }
+
+        Node<T>& get_bottom_right_node() {
+            return bottom_right;
+        }
+
+        geometry::Point get_splitting_point() const {
+            return top_left.get_bounding_box().get_bottom_right_corner();
         }
 
     private:
