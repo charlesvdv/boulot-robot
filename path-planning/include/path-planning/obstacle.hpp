@@ -3,17 +3,15 @@
 #include <memory>
 
 #include "point.hpp"
-#include "zone.hpp"
+#include "shape.hpp"
 
 namespace pathplanning::map {
 
     enum class SurfaceRelationship {
-        // Two surfaces are overlapping each other
         OVERLAP, 
-        // Two surfaces are not touching each other
         DISJOINT,
-        // A surface contains the others.
         CONTAINS,
+        CONTAINED,
     };
 
     class Obstacle {
@@ -23,8 +21,14 @@ namespace pathplanning::map {
 
         virtual ~Obstacle();
 
-        // Check whether the obstacle contains a given rectangular zone.
-        virtual SurfaceRelationship contains(const geometry::RectangularZone& area) const = 0;
+        // Check the obstacle relationship with a given zone
+        //  - OVERLAP: the obstacle overlap with the given zone
+        //  - DISJOINT: the obstacle does have any contact with the zone
+        //  - CONTAINS: the obstacle contains the zone
+        //  - CONTAINED: the obstacle is contained in the zone
+        // If the obstacle is touching the zone only by a point or a line, the obstacle 
+        //  is considered DISJOINT from the zone.
+        virtual SurfaceRelationship get_relation_with_zone(const geometry::StraightRectangle& rectangle) const = 0;
     };
 
 }

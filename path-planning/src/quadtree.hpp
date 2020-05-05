@@ -3,7 +3,7 @@
 #include <optional>
 #include <variant>
 
-#include <path-planning/zone.hpp>
+#include <path-planning/shape.hpp>
 
 namespace pathplanning::map {
 
@@ -18,8 +18,8 @@ namespace pathplanning::map {
             EDGE,
         };
 
-        static QuadtreeNode<T> make_inner_node(const QuadtreeNodeChildren<T>& children, const geometry::RectangularZone& zone);
-        static QuadtreeNode<T> make_edge_node(const T& value, const geometry::RectangularZone& zone);
+        static QuadtreeNode<T> make_inner_node(const QuadtreeNodeChildren<T>& children, const geometry::StraightRectangle& zone);
+        static QuadtreeNode<T> make_edge_node(const T& value, const geometry::StraightRectangle& zone);
 
         Type get_type() const;
         const T& get_edge_value() const;
@@ -29,10 +29,10 @@ namespace pathplanning::map {
         void merge(const T& value);
 
     private:
-        QuadtreeNode(const QuadtreeNodeChildren<T>& children, const geometry::RectangularZone& zone);
-        QuadtreeNode(const T& value, const geometry::RectangularZone& zone);
+        QuadtreeNode(const QuadtreeNodeChildren<T>& children, const geometry::StraightRectangle& zone);
+        QuadtreeNode(const T& value, const geometry::StraightRectangle& zone);
 
-        geometry::RectangularZone zone;
+        geometry::StraightRectangle zone;
         Type value_type;
         std::variant<QuadtreeNodeChildren<T>, T> value; 
     };

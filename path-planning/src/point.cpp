@@ -1,7 +1,7 @@
 #include <cmath>
 
 #include <path-planning/point.hpp>
-#include <path-planning/math_utils.hpp>
+#include "math_utils.hpp"
 
 namespace pathplanning::geometry {
 

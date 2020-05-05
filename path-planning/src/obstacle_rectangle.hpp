@@ -2,26 +2,20 @@
 
 #include <path-planning/obstacle.hpp>
 #include <path-planning/point.hpp>
+#include <path-planning/shape.hpp>
 
 namespace pathplanning::map {
 
-    class RectangleObstacle: public Obstacle {
+    class RectangleObstacle: public Obstacle, private geometry::StraightRectangle {
     public:
-        RectangleObstacle(const geometry::Point& point, const geometry::Point& opposite);
+        RectangleObstacle(const geometry::Point& corner, const geometry::Point& opposite_corner);
 
-        SurfaceRelationship contains(const geometry::RectangularZone& zone) const override;
+        SurfaceRelationship get_relation_with_zone(const geometry::StraightRectangle& rectangle) const override;
 
     private:
-        bool contains_fully(const geometry::RectangularZone& area) const;
-        bool overlap(const geometry::RectangularZone& area) const;
-
-        double get_left_line() const;
-        double get_right_line() const;
-        double get_top_line() const;
-        double get_bottom_line() const;
-
-        const geometry::Point point;
-        const geometry::Point opposite;
+        bool contains(const geometry::StraightRectangle& rectangle) const;
+        bool contained(const geometry::StraightRectangle& rectangle) const;
+        bool overlap(const geometry::StraightRectangle& rectangle) const;
     };
 
 }
