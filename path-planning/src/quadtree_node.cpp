@@ -3,21 +3,21 @@
 namespace pathplanning::map {
 
     template<class T>
-    QuadtreeNode<T> QuadtreeNode<T>::make_inner_node(const QuadtreeNodeChildren<T>& children, const geometry::RectangularZone& zone) {
+    QuadtreeNode<T> QuadtreeNode<T>::make_inner_node(const QuadtreeNodeChildren<T>& children, const geometry::StraightRectangle& zone) {
         return QuadtreeNode(children, zone);
     }
 
     template<class T>
-    QuadtreeNode<T> QuadtreeNode<T>::make_edge_node(const T& value, const geometry::RectangularZone& zone) {
+    QuadtreeNode<T> QuadtreeNode<T>::make_edge_node(const T& value, const geometry::StraightRectangle& zone) {
         return QuadtreeNode(value, zone);
     }
 
     template<class T>
-    QuadtreeNode<T>::QuadtreeNode(const QuadtreeNodeChildren<T>& children, const geometry::RectangularZone& zone):
+    QuadtreeNode<T>::QuadtreeNode(const QuadtreeNodeChildren<T>& children, const geometry::StraightRectangle& zone):
         value(children), zone(zone), value_type(Type::INNER) {}
 
     template<class T>
-    QuadtreeNode<T>::QuadtreeNode(const T& value, const geometry::RectangularZone& zone):
+    QuadtreeNode<T>::QuadtreeNode(const T& value, const geometry::StraightRectangle& zone):
         value(value), value_type(Type::EDGE), zone(zone) {}
 
     template<class T>

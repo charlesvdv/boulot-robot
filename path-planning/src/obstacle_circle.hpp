@@ -9,11 +9,12 @@ namespace pathplanning::map {
     public:
         CircleObstacle(const geometry::Point& center, double radius);
 
-        SurfaceRelationship contains(const geometry::RectangularZone& zone) const override;
+        SurfaceRelationship get_relation_with_zone(const geometry::StraightRectangle& rectangle) const override;
 
     private:
-        bool contains_fully(const geometry::RectangularZone& zone) const;
-        bool overlap(const geometry::RectangularZone& zone) const;
+        bool contains(const geometry::StraightRectangle& rectangle) const;
+        bool contained(const geometry::StraightRectangle& rectangle) const;
+        bool overlap(const geometry::StraightRectangle& rectangle) const;
 
         bool contains_point(const geometry::Point& point) const;
 

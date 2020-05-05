@@ -3,7 +3,7 @@ add_library("path-planning"
     obstacle.cpp
     obstacle_rectangle.cpp
     obstacle_circle.cpp
-    rectangular_zone.cpp
+    rectangle.cpp
     quadtree_node.cpp
     quadtree_node_children.cpp
 )
