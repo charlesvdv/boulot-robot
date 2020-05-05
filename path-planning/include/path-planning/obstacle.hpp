@@ -26,6 +26,8 @@ namespace pathplanning::map {
         //  - DISJOINT: the obstacle does have any contact with the zone
         //  - CONTAINS: the obstacle contains the zone
         //  - CONTAINED: the obstacle is contained in the zone
+        // If the obstacle is touching the zone only by a point or a line, the obstacle 
+        //  is considered DISJOINT from the zone.
         virtual SurfaceRelationship get_relation_with_zone(const geometry::StraightRectangle& rectangle) const = 0;
     };
 

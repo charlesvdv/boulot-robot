@@ -34,11 +34,11 @@ namespace pathplanning::map {
     }
 
     bool RectangleObstacle::overlap(const geometry::StraightRectangle& rectangle) const {
-        if (get_right_line() < rectangle.get_left_line() || get_left_line() > rectangle.get_right_line()) {
+        if (get_right_line() <= rectangle.get_left_line() || get_left_line() >= rectangle.get_right_line()) {
             // If x coordinates don't cross, it's impossible to have an overlap
             return false;
         }
-        if (get_top_line() < rectangle.get_bottom_line() || get_bottom_line() > rectangle.get_top_line()) {
+        if (get_top_line() <= rectangle.get_bottom_line() || get_bottom_line() >= rectangle.get_top_line()) {
             // If y coordinates don't cross, it's impossible to have an overlap
             return false;
         }

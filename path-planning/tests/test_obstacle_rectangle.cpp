@@ -32,6 +32,14 @@ TEST_CASE("Verify rectangle obstacle contains method") {
         REQUIRE(map::SurfaceRelationship::CONTAINED == rectangleObstacle->get_relation_with_zone(zone));
     }
 
+    SECTION("when obstacle and zone are touching, it should be disjoint") {
+        geo::StraightRectangle zone = geo::StraightRectangle(geo::Point(0, 0), geo::Point(10, 20));
+        REQUIRE(map::SurfaceRelationship::DISJOINT == rectangleObstacle->get_relation_with_zone(zone));
+
+        zone = geo::StraightRectangle(geo::Point(-10, -10), geo::Point(20, 10));
+        REQUIRE(map::SurfaceRelationship::DISJOINT == rectangleObstacle->get_relation_with_zone(zone));
+    }
+
     SECTION("overlapping zone") {
         geo::StraightRectangle zone(geo::Point(0, 0), geo::Point(15, 15));
         REQUIRE(map::SurfaceRelationship::OVERLAP == rectangleObstacle->get_relation_with_zone(zone));

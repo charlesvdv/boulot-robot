@@ -32,6 +32,11 @@ TEST_CASE("Verify circular obstacle contains method") {
         REQUIRE(map::SurfaceRelationship::CONTAINED == circleObstacle->get_relation_with_zone(zone));
     }
 
+    SECTION("when obstacle and zone are touching, it should be disjoint") {
+        geo::StraightRectangle zone = geo::StraightRectangle(geo::Point(0, 0), geo::Point(5, 20));
+        REQUIRE(map::SurfaceRelationship::DISJOINT == circleObstacle->get_relation_with_zone(zone));
+    }
+
     SECTION("overlapping zone") {
         // Overlap coner zone
         geo::StraightRectangle zone(geo::Point(7, 11), geo::Point(0, 15));
