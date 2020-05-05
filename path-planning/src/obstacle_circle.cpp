@@ -46,10 +46,10 @@ namespace pathplanning::map {
         double distance_x = std::abs(center.get_x() - zone.get_center().get_x());
         double distance_y = std::abs(center.get_y() - zone.get_center().get_y());
 
-        if (distance_x > (zone.get_width() / 2 + radius)) { 
+        if (distance_x >= (zone.get_width() / 2 + radius)) { 
             return false; 
         }
-        if (distance_y > (zone.get_height() / 2 + radius)) { 
+        if (distance_y >= (zone.get_height() / 2 + radius)) { 
             return false; 
         }
 
