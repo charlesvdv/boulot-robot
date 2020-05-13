@@ -1,4 +1,4 @@
-# eurobot-2021
+# boulot-robot
 
 ![CI](https://github.com/charlesvdv/eurobot-2021/workflows/CI/badge.svg)
 

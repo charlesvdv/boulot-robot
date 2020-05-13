@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(eurobot-2021
+project(boulot-robot
     VERSION 0.1
     DESCRIPTION "Control software for the eurobot 2021"
     LANGUAGES CXX)
