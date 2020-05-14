@@ -4,9 +4,9 @@
 
 namespace robotlib::proximity_handler {
 
-    class Proximity_handler {
+    class ProximityHandler {
     public: 
-        Proximity_handler(double min_distance);
+        ProximityHandler(double min_distance);
         bool isTooClose();
 
     private: 

@@ -2,9 +2,9 @@
 
 namespace iointerface::ultra_sonic_sensor {
 
-    class Ultra_sonic_sensor {
+    class UltraSonicSensor {
     public:
-        Ultra_sonic_sensor();
+        UltraSonicSensor();
     };
 
 }
