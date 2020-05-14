@@ -25,6 +25,8 @@ namespace pathplanning::geometry {
         
         Point get_center() const;
 
+        double get_area() const;
+
     private:
         Point bottom_left_corner;
         Point top_right_corner;

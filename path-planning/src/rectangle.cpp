@@ -64,4 +64,8 @@ namespace pathplanning::geometry {
         double y = (get_top_line() + get_bottom_line())/2;
         return Point(x, y);
     }
+
+    double StraightRectangle::get_area() const {
+        return get_width() * get_height();
+    }
 }
