@@ -18,3 +18,4 @@ FetchContent_MakeAvailable(Catch2)
 
 add_subdirectory("path-planning")
 add_subdirectory("robotlib")
+add_subdirectory("io-interface")
