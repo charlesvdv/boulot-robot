@@ -1,6 +1,9 @@
 add_library(robotlib
-    placeholder.cpp
+    proximity_handler.cpp
 )
+
+target_link_libraries(robotlib
+    PRIVATE "io-interface")
 
 target_include_directories(robotlib 
     PUBLIC ../include 
