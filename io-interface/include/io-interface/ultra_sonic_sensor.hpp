@@ -1,6 +1,6 @@
 #pragma once
 
-namespace iointerface::ultra_sonic_sensor {
+namespace iointerface::sensor {
 
     class UltraSonicSensor {
     public:
