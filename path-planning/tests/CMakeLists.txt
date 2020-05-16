@@ -2,6 +2,7 @@ add_executable("path-planning-test"
     test_obstacle_circle.cpp
     test_obstacle_rectangle.cpp
     test_quadtree.cpp
+    test_map.cpp
     main.cpp)
 
 target_link_libraries("path-planning-test"
