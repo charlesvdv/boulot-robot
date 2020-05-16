@@ -4,13 +4,16 @@
 
 namespace robotlib::proximity_handler {
 
+    using namespace iointerface::sensor;
+
     class ProximityHandler {
     public: 
-        ProximityHandler(const double min_distance);
+        ProximityHandler(const UltraSonicSensor& us_sensor, const double min_distance);
         bool is_too_close() const;
 
     private: 
-        double min_distance;
+        const double min_distance;
+        const UltraSonicSensor us_sensor;
     };
 
 }

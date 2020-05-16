@@ -8,7 +8,6 @@ target_link_libraries(robotlib
 target_include_directories(robotlib 
     PUBLIC ../include 
     PRIVATE .
-    PRIVATE ../../io-interface/include/
 )
 
 target_compile_features(robotlib PUBLIC cxx_std_17)
