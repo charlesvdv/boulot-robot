@@ -120,13 +120,19 @@ namespace pathplanning::map {
             }
         } else if (obstacle_relationship == SurfaceRelationship::CONTAINED || 
                 obstacle_relationship == SurfaceRelationship::OVERLAP) {
-            // TODO(cvandevo): if obstacles are a bit smarter, the splitting point could be chosen more wisely
-            //  and we could create an "unbalanced" quadtree.
-            geometry::Point splitting_point = node.get_bounding_box().get_center();
-            // By default, let's suppose the zone is free and the refinement will fill
-            // if there is any obstacle.
-            quadtree::SplittingNodeInfo splitting_info(splitting_point, ZoneStatus::FREE);
-            node.split(splitting_info);
+            if (node.get_type() == quadtree::NodeType::LEAF) {
+                // TODO(cvandevo): if obstacles are a bit smarter, the splitting point could be chosen more wisely
+                //  and we could create an "unbalanced" quadtree.
+                geometry::Point splitting_point = node.get_bounding_box().get_center();
+                // By default, let's suppose the zone is free and the refinement will fill
+                // if there is any obstacle.
+                quadtree::SplittingNodeInfo splitting_info(splitting_point, ZoneStatus::FREE);
+                node.split(splitting_info);
+            } else if (node.get_type() == quadtree::NodeType::BRANCH) {
+                // do nothing as we need to drill down more in the quadtree to see the value of the leaf node...
+            } else {
+                unknown_state_error();
+            }
 
             std::shared_ptr<QuadtreeBranches> branches = node.get_branches();
             obstacle_refinement(branches->get_top_left_node(), obstacle, precision);
