@@ -1,0 +1,24 @@
+name: Static analysis
+
+on:
+  schedule:
+    # https://crontab.guru/#0_10_*_*_1
+    # At 10:00 on Monday.
+    - cron: '0 10 * * 1'
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Init
+      run: scan-build cmake -S . -B build-scan -GNinja
+
+    - name: Build
+      run: scan-build -o build-scan/scan-result cmake --build build-scan
+
+    - name: Check if there is errors or warnings
+      # When the static analysis is successful, the `scan-result` directory should be empty.
+      run: '[ "$(ls -A build-scan/scan-result)" ] && exit 1'
