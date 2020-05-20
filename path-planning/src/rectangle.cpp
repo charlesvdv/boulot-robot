@@ -19,53 +19,53 @@ namespace pathplanning::geometry {
         }
     }
 
-    double StraightRectangle::get_left_line() const {
+    auto StraightRectangle::get_left_line() const -> double {
         return bottom_left_corner.get_x();
     }
 
-    double StraightRectangle::get_right_line() const {
+    auto StraightRectangle::get_right_line() const -> double {
         return top_right_corner.get_x();
     }
 
-    double StraightRectangle::get_bottom_line() const {
+    auto StraightRectangle::get_bottom_line() const -> double {
         return bottom_left_corner.get_y();
     }
 
-    double StraightRectangle::get_top_line() const {
+    auto StraightRectangle::get_top_line() const -> double {
         return top_right_corner.get_y();
     }
 
-    Point StraightRectangle::get_top_left_corner() const {
+    auto StraightRectangle::get_top_left_corner() const -> Point {
         return Point(get_left_line(), get_top_line());
     }
 
-    Point StraightRectangle::get_top_right_corner() const {
+    auto StraightRectangle::get_top_right_corner() const -> Point {
         return top_right_corner;
     }
 
-    Point StraightRectangle::get_bottom_left_corner() const {
+    auto StraightRectangle::get_bottom_left_corner() const -> Point {
         return bottom_left_corner;
     }
 
-    Point StraightRectangle::get_bottom_right_corner() const {
+    auto StraightRectangle::get_bottom_right_corner() const -> Point {
         return Point(get_right_line(), get_bottom_line());
     }
 
-    double StraightRectangle::get_width() const {
+    auto StraightRectangle::get_width() const -> double {
         return std::abs(get_right_line() - get_left_line());
     }
 
-    double StraightRectangle::get_height() const {
+    auto StraightRectangle::get_height() const -> double {
         return std::abs(get_top_line() - get_bottom_line());
     }
 
-    Point StraightRectangle::get_center() const {
+    auto StraightRectangle::get_center() const -> Point {
         double x = (get_right_line() + get_left_line())/2;
         double y = (get_top_line() + get_bottom_line())/2;
         return Point(x, y);
     }
 
-    double StraightRectangle::get_area() const {
+    auto StraightRectangle::get_area() const -> double {
         return get_width() * get_height();
     }
 }

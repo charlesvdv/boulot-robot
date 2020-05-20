@@ -7,7 +7,7 @@ namespace pathplanning::map {
     CircleObstacle::CircleObstacle(const geometry::Point& center, double radius):
         center(center), radius(radius) {}
 
-    SurfaceRelationship CircleObstacle::get_relation_with_zone(const geometry::StraightRectangle& zone) const {
+    auto CircleObstacle::get_relation_with_zone(const geometry::StraightRectangle& zone) const -> SurfaceRelationship {
         if (contains(zone)) {
             return SurfaceRelationship::CONTAINS;
         } else if (contained(zone)) {
@@ -18,7 +18,7 @@ namespace pathplanning::map {
         return SurfaceRelationship::DISJOINT;
     }
 
-    bool CircleObstacle::contains(const geometry::StraightRectangle& zone) const {
+    auto CircleObstacle::contains(const geometry::StraightRectangle& zone) const -> bool {
         if (contains_point(zone.get_bottom_left_corner()) && 
                 contains_point(zone.get_top_left_corner()) &&
                 contains_point(zone.get_bottom_right_corner()) &&
@@ -28,7 +28,7 @@ namespace pathplanning::map {
         return false;
     }
 
-    bool CircleObstacle::contained(const geometry::StraightRectangle& rectangle) const {
+    auto CircleObstacle::contained(const geometry::StraightRectangle& rectangle) const -> bool {
         double left_most_x = center.get_x() - radius;
         double right_most_x = center.get_x() + radius;
         double top_most_y = center.get_y() + radius;
@@ -42,7 +42,7 @@ namespace pathplanning::map {
     }
 
     // Implemented based on https://stackoverflow.com/questions/401847/circle-rectangle-collision-detection-intersection
-    bool CircleObstacle::overlap(const geometry::StraightRectangle& zone) const {
+    auto CircleObstacle::overlap(const geometry::StraightRectangle& zone) const -> bool {
         double distance_x = std::abs(center.get_x() - zone.get_center().get_x());
         double distance_y = std::abs(center.get_y() - zone.get_center().get_y());
 
@@ -67,7 +67,7 @@ namespace pathplanning::map {
         return false;
     }
 
-    bool CircleObstacle::contains_point(const geometry::Point& point) const {
+    auto CircleObstacle::contains_point(const geometry::Point& point) const -> bool {
         if (std::pow(center.get_x() - point.get_x(), 2) + std::pow(center.get_y() - point.get_y(), 2) > std::pow(radius, 2)) {
             return false;
         }

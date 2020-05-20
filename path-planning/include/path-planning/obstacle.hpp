@@ -16,10 +16,10 @@ namespace pathplanning::map {
 
     class Obstacle {
     public:
-        static std::unique_ptr<Obstacle> make_rectangle(const geometry::Point& point, const geometry::Point& opposite);
-        static std::unique_ptr<Obstacle> make_circle(const geometry::Point& center, double radius);
+        static auto make_rectangle(const geometry::Point& point, const geometry::Point& opposite) -> std::unique_ptr<Obstacle>;
+        static auto make_circle(const geometry::Point& center, double radius) -> std::unique_ptr<Obstacle>;
 
-        virtual ~Obstacle();
+        virtual ~Obstacle() = default;
 
         // Check the obstacle relationship with a given zone
         //  - OVERLAP: the obstacle overlap with the given zone
@@ -28,7 +28,7 @@ namespace pathplanning::map {
         //  - CONTAINED: the obstacle is contained in the zone
         // If the obstacle is touching the zone only by a point or a line, the obstacle 
         //  is considered DISJOINT from the zone.
-        virtual SurfaceRelationship get_relation_with_zone(const geometry::StraightRectangle& rectangle) const = 0;
+        virtual auto get_relation_with_zone(const geometry::StraightRectangle& rectangle) const -> SurfaceRelationship = 0;
     };
 
 }

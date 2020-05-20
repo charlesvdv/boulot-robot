@@ -6,6 +6,7 @@
 
 #include <path-planning/point.hpp>
 #include <path-planning/shape.hpp>
+#include <utility>
 
 namespace pathplanning::quadtree {
 
@@ -31,46 +32,46 @@ namespace pathplanning::quadtree {
             splitting_point(splitting_point), top_left_value(value), top_right_value(value),
             bottom_left_value(value), bottom_right_value(value) {}
 
-        SplittingNodeInfo& with_top_left_value(const T& value) {
+        auto with_top_left_value(const T& value) -> SplittingNodeInfo& {
             top_left_value = value;
             return *this;
         }
 
-        SplittingNodeInfo& with_top_right_value(const T& value) {
+        auto with_top_right_value(const T& value) -> SplittingNodeInfo& {
             top_right_value = value;
             return *this;
         }
 
-        SplittingNodeInfo& with_bottom_left_value(const T& value) {
+        auto with_bottom_left_value(const T& value) -> SplittingNodeInfo& {
             bottom_left_value = value;
             return *this;
         }
 
-        SplittingNodeInfo& with_bottom_right_value(const T& value) {
+        auto with_bottom_right_value(const T& value) -> SplittingNodeInfo& {
             bottom_right_value = value;
             return *this;
         }
 
-        const geometry::Point& get_splitting_point() const {
+        auto get_splitting_point() const -> const geometry::Point& {
             return splitting_point;
         }
 
-        const T& get_top_left_value() const {
+        auto get_top_left_value() const -> const T& {
             validate();
             return *top_left_value;
         }
 
-        const T& get_top_right_value() const {
+        auto get_top_right_value() const -> const T& {
             validate();
             return *top_right_value;
         }
 
-        const T& get_bottom_left_value() const {
+        auto get_bottom_left_value() const -> const T& {
             validate();
             return *bottom_left_value;
         }
 
-        const T& get_bottom_right_value() const {
+        auto get_bottom_right_value() const -> const T& {
             validate();
             return *bottom_right_value;
         }
@@ -100,21 +101,21 @@ namespace pathplanning::quadtree {
     template<class T>
     class Node {
     public:
-        NodeType get_type() const {
+        auto get_type() const -> NodeType {
             if (value.has_value()) {
                 return NodeType::LEAF;
             }
             return NodeType::BRANCH;
         }
 
-        std::shared_ptr<Branches<T>> get_branches() const {
+        auto get_branches() const -> std::shared_ptr<Branches<T>> {
             if (get_type() != NodeType::BRANCH) {
                 throw std::logic_error("Can not get tree branches when node is not a branch");
             }
             return branches;
         }
 
-        const T& get_leaf_value() const {
+        auto get_leaf_value() const -> const T& {
             if (get_type() != NodeType::LEAF) {
                 throw std::logic_error("Can not get leaf value when node is not a leaf");
             }
@@ -128,7 +129,7 @@ namespace pathplanning::quadtree {
             this->value = value;
         }
 
-        const BoundingBox& get_bounding_box() const {
+        auto get_bounding_box() const -> const BoundingBox& {
             return bounding_box;
         }
 
@@ -155,7 +156,7 @@ namespace pathplanning::quadtree {
             bounding_box(bounding_box), value(value), branches(nullptr) {}
 
     private:
-        std::shared_ptr<Branches<T>> build_branches_for_split(const SplittingNodeInfo<T>& info) const {
+        auto build_branches_for_split(const SplittingNodeInfo<T>& info) const -> std::shared_ptr<Branches<T>> {
             geometry::Point split_point = info.get_splitting_point();
             Node<T> top_left(BoundingBox(split_point, bounding_box.get_top_left_corner()), info.get_top_left_value());
             Node<T> top_right(BoundingBox(split_point, bounding_box.get_top_right_corner()), info.get_top_right_value());
@@ -183,47 +184,47 @@ namespace pathplanning::quadtree {
     template<class T>
     class Branches {
     public:
-        const Node<T>& get_top_right_node() const {
+        auto get_top_right_node() const -> const Node<T>& {
             return top_right;
         }
 
-        Node<T>& get_top_right_node() {
+        auto get_top_right_node() -> Node<T>& {
             return top_right;
         }
 
-        const Node<T>& get_top_left_node() const {
+        auto get_top_left_node() const -> const Node<T>& {
             return top_left;
         }
 
-        Node<T>& get_top_left_node() {
+        auto get_top_left_node() -> Node<T>& {
             return top_left;
         }
 
-        const Node<T>& get_bottom_left_node() const {
+        auto get_bottom_left_node() const -> const Node<T>& {
             return bottom_left;
         }
 
-        Node<T>& get_bottom_left_node() {
+        auto get_bottom_left_node() -> Node<T>& {
             return bottom_left;
         }
 
-        const Node<T>& get_bottom_right_node() const {
+        auto get_bottom_right_node() const -> const Node<T>& {
             return bottom_right;
         }
 
-        Node<T>& get_bottom_right_node() {
+        auto get_bottom_right_node() -> Node<T>& {
             return bottom_right;
         }
 
-        geometry::Point get_splitting_point() const {
+        auto get_splitting_point() const -> geometry::Point {
             return top_left.get_bounding_box().get_bottom_right_corner();
         }
 
     private:
-        Branches(const Node<T>& top_right, const Node<T>& top_left,
-            const Node<T>& bottom_left, const Node<T>& bottom_right):
-                top_right(top_right), top_left(top_left), bottom_left(bottom_left), 
-                bottom_right(bottom_right) {}
+        Branches(Node<T>  top_right, Node<T>  top_left,
+            Node<T>  bottom_left, Node<T>  bottom_right):
+                top_right(std::move(top_right)), top_left(std::move(top_left)), bottom_left(std::move(bottom_left)), 
+                bottom_right(std::move(bottom_right)) {}
 
         Node<T> top_left;
         Node<T> top_right;

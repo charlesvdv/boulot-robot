@@ -5,9 +5,7 @@
 
 namespace pathplanning::map {
 
-    Map::~Map() {}
-
-    std::unique_ptr<Map> Map::make(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles) {
+    auto Map::make(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles) -> std::unique_ptr<Map> {
         return std::make_unique<MapImpl>(dimension, obstacles);
     }
 
@@ -18,15 +16,15 @@ namespace pathplanning::map {
         this->precision = precision;
     }
 
-    double MapDimension::get_length() const {
+    auto MapDimension::get_length() const -> double {
         return length;
     }
 
-    double MapDimension::get_width() const {
+    auto MapDimension::get_width() const -> double {
         return width;
     }
 
-    double MapDimension::get_precision() const {
+    auto MapDimension::get_precision() const -> double {
         return precision;
     }
 }
