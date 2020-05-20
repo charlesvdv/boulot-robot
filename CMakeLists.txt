@@ -16,6 +16,9 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(Catch2)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
+
 add_subdirectory("path-planning")
 add_subdirectory("robotlib")
 add_subdirectory("io-interface")
