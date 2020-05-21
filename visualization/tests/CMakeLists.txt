@@ -6,4 +6,4 @@ target_link_libraries("visualization-test"
 
 target_compile_features("visualization-test" PRIVATE cxx_std_17)
 
-add_test(NAME SVG COMMAND "visualization-test")
+add_test(NAME VISUALIZATION COMMAND "visualization-test")

@@ -9,6 +9,10 @@
 namespace visualization::render {
 
     class Renderer {
+    public:
+        virtual ~Renderer() = default;
+
+    private:
         virtual void add_line(const geometry::Line& line) = 0;
         virtual void add_rectangle(const geometry::Rectangle& rectangle) = 0;
         virtual void add_circle(const geometry::Circle& circle) = 0;

@@ -10,15 +10,12 @@ namespace visualization::render {
     public:
         class Builder;
 
-        const std::string& get_node() const;
+        const std::string to_string() const;
     private: 
         XMLNode(const std::string tag, const std::vector<std::pair<std::string, std::string>> attributes);
 
         std::string tag;
         std::vector<std::pair<std::string, std::string>> attributes;
-        std::string node;
-
-        const void build_node();
     };
 
     class XMLNode::Builder {

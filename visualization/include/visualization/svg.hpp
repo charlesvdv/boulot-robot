@@ -8,11 +8,9 @@
 
 namespace visualization::render {
 
-    class SVGRender: public Renderer {
+    class SVGRenderer: public Renderer {
     public:
-        virtual ~SVGRender();
-
-        SVGRender(const std::string name, double width, double height);
+        SVGRenderer(const std::string name, double width, double height);
 
         void add_line(const geometry::Line& line) override;
         void add_rectangle(const geometry::Rectangle& rectangle) override;

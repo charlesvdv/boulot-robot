@@ -5,10 +5,7 @@
 namespace visualization::render {
 
     XMLNode::XMLNode(const std::string tag, const std::vector<std::pair<std::string, std::string>> attributes):
-        tag(tag), attributes(attributes) {
-        
-        build_node();
-    }
+        tag(tag), attributes(attributes) {}
     
     XMLNode::Builder::Builder(const std::string tag): 
         tag(tag) {}
@@ -23,7 +20,7 @@ namespace visualization::render {
         return XMLNode(tag, attributes);
     }
 
-    void const XMLNode::build_node() {
+    const std::string XMLNode::to_string() const {
         std::stringstream node_builder;
 
         node_builder << "\t<" << tag;
@@ -32,10 +29,6 @@ namespace visualization::render {
         }
         node_builder << "/>\n";
 
-        node = node_builder.str();
-    }
-
-    const std::string& XMLNode::get_node() const {
-        return node;
+        return node_builder.str();
     }
 }
