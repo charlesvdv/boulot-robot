@@ -1,14 +1,21 @@
 #include <visualization/rectangle.hpp>
+#include <visualization/line.hpp>
 #include <visualization/circle.hpp>
 #include <visualization/svg.hpp>
+
 #include <fstream>
+#include <iostream>
 
 using namespace visualization;
 
 int main() {
     //Temporary
-    render::SVGDimension dimension = render::SVGDimension(100, 100);
-    render::SVGRender svg_content = render::SVGRender("test", dimension);
+    render::SVGRender svg_content = render::SVGRender("test", 100, 100);
+
+    geometry::Point start = geometry::Point(80, 80);
+    geometry::Point end = geometry::Point(90, 90);
+    geometry::Line line = geometry::Line(start, end);
+    svg_content.add_line(line);
 
     geometry::Point center1 = geometry::Point(10, 10);
     geometry::Rectangle renctangle1 = geometry::Rectangle(20, 20, center1);

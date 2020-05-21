@@ -10,7 +10,7 @@ namespace visualization::geometry {
         return radius;
     }
     
-    Point Circle::get_center() const {
+    const Point& Circle::get_center() const {
         return center;
     }
 }

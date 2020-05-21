@@ -1,25 +1,28 @@
 #include <visualization/svg.hpp>
 
+#include <sstream>
+
 namespace visualization::render {
 
-    SVGDimension::SVGDimension(double height, double width):
-        height(height), width(width) {}
-
-    double SVGDimension::get_width() const {
-        return width;
-    }
-
-    double SVGDimension::get_height() const {
-        return height;
-    }
-
-    SVGRender::SVGRender(const std::string name, const SVGDimension& dimension):
-        name(name), dimension(dimension) {}
+    SVGRender::SVGRender(const std::string name, double width, double height):
+        name(name), width(width), height(height) {}
 
     SVGRender::~SVGRender() {}
 
+    void SVGRender::add_line(const geometry::Line& line) {
+        XMLNode node = XMLNode::Builder("line")
+            .with_attribute("x1", std::to_string(line.get_start().get_x()))
+            .with_attribute("y1", std::to_string(line.get_start().get_y()))
+            .with_attribute("x2", std::to_string(line.get_end().get_x()))
+            .with_attribute("y2", std::to_string(line.get_end().get_y()))
+            .with_attribute("stroke", "black") 
+            .build();
+
+        nodes.push_back(node);
+    }
+
     void SVGRender::add_rectangle(const geometry::Rectangle& rectangle) {
-        XMLNode node = XMLNode::Builder{}.has_tag("rect")
+        XMLNode node = XMLNode::Builder("rect")
             .with_attribute("x", std::to_string(rectangle.get_center().get_x()))
             .with_attribute("y", std::to_string(rectangle.get_center().get_y()))
             .with_attribute("width", std::to_string(rectangle.get_width()))
@@ -30,7 +33,7 @@ namespace visualization::render {
     }
 
     void SVGRender::add_circle(const geometry::Circle& circle) {
-        XMLNode node = XMLNode::Builder{}.has_tag("circle")
+        XMLNode node = XMLNode::Builder("circle")
             .with_attribute("cx", std::to_string(circle.get_center().get_x()))
             .with_attribute("cy", std::to_string(circle.get_center().get_y()))
             .with_attribute("r", std::to_string(circle.get_radius()))
@@ -38,30 +41,16 @@ namespace visualization::render {
         
         nodes.push_back(node);
     }
-
-    const std::string SVGRender::build_node(const XMLNode& node) const {
-        std::stringstream svg_node;
-
-        svg_node << "\t<" << node.get_tag();
-        std::vector<std::pair<std::string, std::string>> attributes = node.get_attributes();
-        for(std::vector<std::pair<std::string, std::string>>::const_iterator it = attributes.begin(); it != attributes.end(); it++){
-            svg_node << " "<< it->first << "=\"" << it->second <<"\"";
-        }
-        svg_node << "/>\n";
-
-        return svg_node.str();
-    }
     
-    const std::string SVGRender::render() const {
+    std::string SVGRender::render() const {
         std::stringstream svg_built;
 
-        svg_built << "<svg width=\"" << dimension.get_width() << "\" height=\"" << dimension.get_height() << "\">\n";
+        svg_built << "<svg width=\"" << width << "\" height=\"" << height << "\">\n";
         for(std::vector<int>::size_type i = 0; i != nodes.size(); i++) {
-            svg_built << build_node(nodes[i]);
+            svg_built << nodes[i].get_node();
         }
         svg_built << "</svg>";
 
         return svg_built.str();
     }
-
 }

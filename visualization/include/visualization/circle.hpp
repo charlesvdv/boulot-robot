@@ -5,16 +5,14 @@
 namespace visualization::geometry {
 
     class Circle {
+    public:
+        Circle(const Point& center, double radius);
 
-        public:
-            Circle(const Point& center, double radius);
-
-            double get_radius() const;
-            Point get_center() const;
-
-        private:
-            const Point center;
-            double radius;
+        double get_radius() const;
+        const Point& get_center() const;
+    private:
+        Point center;
+        double radius;
     };
     
 }

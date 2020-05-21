@@ -14,7 +14,7 @@ namespace visualization::geometry {
         return height;
     }
 
-    Point Rectangle::get_center() const {
+    const Point& Rectangle::get_center() const {
         return center;
     }
 }

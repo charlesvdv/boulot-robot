@@ -8,7 +8,6 @@ namespace visualization::geometry {
 
         double get_x() const;
         double get_y() const;
-
     private:
         double x;
         double y;

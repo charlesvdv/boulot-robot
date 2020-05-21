@@ -2,6 +2,7 @@ add_library("visualization"
     point.cpp
     rectangle.cpp 
     circle.cpp
+    line.cpp
     xml_node.cpp
     svg.cpp
 )
