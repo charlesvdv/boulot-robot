@@ -1,6 +1,6 @@
 # boulot-robot
 
-![CI](https://github.com/charlesvdv/eurobot-2021/workflows/CI/badge.svg)
+![CI](https://github.com/charlesvdv/boulot-robot/workflows/CI/badge.svg)
 
 ## Building
 
