@@ -4,7 +4,8 @@ add_library("visualization"
     circle.cpp
     line.cpp
     xml_node.cpp
-    svg.cpp
+    renderer.cpp
+    svg_renderer.cpp
 )
 
 target_include_directories("visualization" 

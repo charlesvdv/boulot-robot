@@ -1,14 +1,15 @@
-#include <visualization/xml_node.hpp>
+#include "xml_node.hpp"
 
 #include <sstream>
+#include <utility>
 
 namespace visualization::render {
 
-    XMLNode::XMLNode(const std::string& tag, const std::vector<std::pair<std::string, std::string>>& attributes):
+    XMLNode::XMLNode(std::string&& tag, std::vector<std::pair<std::string, std::string>>&& attributes):
         tag(tag), attributes(attributes) {}
     
-    XMLNode::Builder::Builder(const std::string& tag): 
-        tag(tag) {}
+    XMLNode::Builder::Builder(std::string tag):
+        tag(std::move(tag)) {}
 
     auto XMLNode::Builder::with_attribute(const std::string& name, const std::string& value) -> XMLNode::Builder& {
         std::pair <std::string, std::string> attribute(name, value);
@@ -16,8 +17,8 @@ namespace visualization::render {
         return *this;
     }
 
-    auto XMLNode::Builder::build() const -> XMLNode {
-        return XMLNode(tag, attributes);
+    auto XMLNode::Builder::build() -> XMLNode {
+        return XMLNode(std::move(tag), std::move(attributes));
     }
 
     auto XMLNode::to_string() const -> const std::string {

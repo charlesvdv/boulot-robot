@@ -3,14 +3,14 @@
 #include <string>
 #include <vector>
 
-#include "render.hpp"
+#include <visualization/renderer.hpp>
 #include "xml_node.hpp"
 
 namespace visualization::render {
 
     class SVGRenderer: public Renderer {
     public:
-        SVGRenderer(const std::string& name, double width, double height);
+        SVGRenderer(std::string name, double width, double height);
 
         void add_line(const geometry::Line& line) override;
         void add_rectangle(const geometry::Rectangle& rectangle) override;

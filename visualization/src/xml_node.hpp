@@ -12,7 +12,7 @@ namespace visualization::render {
 
         auto to_string() const -> const std::string;
     private: 
-        XMLNode(const std::string& tag, const std::vector<std::pair<std::string, std::string>>& attributes);
+        XMLNode(std::string&& tag, std::vector<std::pair<std::string, std::string>>&& attributes);
 
         std::string tag;
         std::vector<std::pair<std::string, std::string>> attributes;
@@ -20,11 +20,11 @@ namespace visualization::render {
 
     class XMLNode::Builder {
     public: 
-        Builder(const std::string& tag);
+        Builder(std::string tag);
 
         auto with_attribute(const std::string& name, const std::string& value) -> Builder&;
         
-        auto build() const -> XMLNode;
+        auto build() -> XMLNode;
     private: 
         std::string tag;
         std::vector<std::pair<std::string, std::string>> attributes;
