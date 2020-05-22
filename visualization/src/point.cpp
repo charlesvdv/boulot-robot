@@ -5,11 +5,11 @@ namespace visualization::geometry {
     Point::Point(double x, double y):
         x(x), y(y) {}
 
-    double Point::get_x() const {
+    auto Point::get_x() const -> double {
         return x;
     }
 
-    double Point::get_y() const {
+    auto Point::get_y() const -> double {
         return y;
     }
 }

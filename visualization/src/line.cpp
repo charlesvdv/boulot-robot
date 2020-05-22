@@ -6,11 +6,11 @@ namespace visualization::geometry {
         start(start), end(end) {
     }
 
-    const Point& Line::get_start() const {
+    auto Line::get_start() const -> const Point& {
         return start;
     }
     
-    const Point& Line::get_end() const {
+    auto Line::get_end() const -> const Point& {
         return end;
     }
 }
