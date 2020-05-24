@@ -3,20 +3,20 @@
 #include <string>
 #include <vector>
 
-#include "render.hpp"
+#include <visualization/renderer.hpp>
 #include "xml_node.hpp"
 
 namespace visualization::render {
 
     class SVGRenderer: public Renderer {
     public:
-        SVGRenderer(const std::string name, double width, double height);
+        SVGRenderer(std::string name, double width, double height);
 
         void add_line(const geometry::Line& line) override;
         void add_rectangle(const geometry::Rectangle& rectangle) override;
         void add_circle(const geometry::Circle& circle) override;
 
-        std::string render() const override;
+        auto render() const -> std::string override;
     private:
         double width;
         double height;

@@ -1,3 +1,6 @@
+# Disable clang-tidy for test
+set(CMAKE_CXX_CLANG_TIDY "")
+
 add_executable("visualization-test"
     main.cpp)
 

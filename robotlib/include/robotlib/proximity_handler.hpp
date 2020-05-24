@@ -9,7 +9,7 @@ namespace robotlib::proximity_handler {
     class ProximityHandler {
     public: 
         ProximityHandler(const UltraSonicSensor& us_sensor, const double min_distance);
-        bool is_too_close() const;
+        auto is_too_close() const -> bool;
 
     private: 
         const double min_distance;

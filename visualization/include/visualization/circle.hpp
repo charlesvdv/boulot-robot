@@ -8,8 +8,8 @@ namespace visualization::geometry {
     public:
         Circle(const Point& center, double radius);
 
-        double get_radius() const;
-        const Point& get_center() const;
+        auto get_radius() const -> double;
+        auto get_center() const -> const Point&;
     private:
         Point center;
         double radius;

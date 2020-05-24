@@ -16,9 +16,9 @@ namespace pathplanning::map {
 
         void set_precision(double precision);
 
-        double get_length() const;
-        double get_width() const;
-        double get_precision() const;
+        auto get_length() const -> double;
+        auto get_width() const -> double;
+        auto get_precision() const -> double;
 
     private:
         double length;
@@ -28,11 +28,11 @@ namespace pathplanning::map {
 
     class Map {
     public:
-        virtual ~Map();
+        virtual ~Map() = default;
 
-        static std::unique_ptr<Map> make(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles);
+        static auto make(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles) -> std::unique_ptr<Map>;
 
-        virtual bool is_point_in_obstacle(const geometry::Point& point) const = 0;
+        virtual auto is_point_in_obstacle(const geometry::Point& point) const -> bool = 0;
     };
 
 }

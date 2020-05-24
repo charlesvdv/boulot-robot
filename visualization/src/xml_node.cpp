@@ -1,31 +1,32 @@
-#include <visualization/xml_node.hpp>
+#include "xml_node.hpp"
 
 #include <sstream>
+#include <utility>
 
 namespace visualization::render {
 
-    XMLNode::XMLNode(const std::string tag, const std::vector<std::pair<std::string, std::string>> attributes):
+    XMLNode::XMLNode(std::string&& tag, std::vector<std::pair<std::string, std::string>>&& attributes):
         tag(tag), attributes(attributes) {}
     
-    XMLNode::Builder::Builder(const std::string tag): 
-        tag(tag) {}
+    XMLNode::Builder::Builder(std::string tag):
+        tag(std::move(tag)) {}
 
-    XMLNode::Builder& XMLNode::Builder::with_attribute(const std::string name, const std::string value) {
+    auto XMLNode::Builder::with_attribute(const std::string& name, const std::string& value) -> XMLNode::Builder& {
         std::pair <std::string, std::string> attribute(name, value);
         attributes.push_back(attribute);
         return *this;
     }
 
-    XMLNode XMLNode::Builder::build() const {
-        return XMLNode(tag, attributes);
+    auto XMLNode::Builder::build() -> XMLNode {
+        return XMLNode(std::move(tag), std::move(attributes));
     }
 
-    const std::string XMLNode::to_string() const {
+    auto XMLNode::to_string() const -> const std::string {
         std::stringstream node_builder;
 
         node_builder << "\t<" << tag;
-        for(std::vector<std::pair<std::string, std::string>>::const_iterator it = attributes.begin(); it != attributes.end(); it++){
-            node_builder << " "<< it->first << "=\"" << it->second <<"\"";
+        for(const auto & attribute : attributes){
+            node_builder << " "<< attribute.first << "=\"" << attribute.second <<"\"";
         }
         node_builder << "/>\n";
 

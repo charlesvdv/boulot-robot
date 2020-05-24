@@ -2,9 +2,9 @@
 
 namespace iointerface::sensor {
 
-    UltraSonicSensor::UltraSonicSensor() {}
+    UltraSonicSensor::UltraSonicSensor() = default;
 
-    double UltraSonicSensor::get_distance() const {
+    auto UltraSonicSensor::get_distance() const -> double {
         return 10; // should come from the sensor itself
     }
 }

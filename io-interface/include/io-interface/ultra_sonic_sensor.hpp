@@ -5,7 +5,7 @@ namespace iointerface::sensor {
     class UltraSonicSensor {
     public:
         UltraSonicSensor();
-        double get_distance() const;
+        auto get_distance() const -> double;
     };
 
 }

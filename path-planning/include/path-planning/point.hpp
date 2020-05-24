@@ -6,12 +6,12 @@ namespace pathplanning::geometry {
     public:
         Point(double x, double y);
 
-        bool operator==(const Point& other) const;
+        auto operator==(const Point& other) const -> bool;
 
-        double euclidian_distance(const Point& other) const;
+        auto euclidian_distance(const Point& other) const -> double;
 
-        double get_x() const;
-        double get_y() const;
+        auto get_x() const -> double;
+        auto get_y() const -> double;
     private:
         double x;
         double y;

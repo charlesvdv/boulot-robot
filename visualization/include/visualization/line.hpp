@@ -8,8 +8,8 @@ namespace visualization::geometry {
     public:
         Line(const Point& start, const Point& end);
 
-        const Point& get_start() const;
-        const Point& get_end() const;
+        auto get_start() const -> const Point&;
+        auto get_end() const -> const Point&;
     private:
         const Point start;
         const Point end;

@@ -6,8 +6,8 @@ namespace visualization::geometry {
     public:
         Point(double x, double y);
 
-        double get_x() const;
-        double get_y() const;
+        auto get_x() const -> double;
+        auto get_y() const -> double;
     private:
         double x;
         double y;

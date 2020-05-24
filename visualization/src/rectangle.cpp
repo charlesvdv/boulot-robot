@@ -6,15 +6,15 @@ namespace visualization::geometry {
         width(width), height(height), center(center) {
     }
 
-    double Rectangle::get_width() const {
+    auto Rectangle::get_width() const -> double {
         return width;
     }
 
-    double Rectangle::get_height() const {
+    auto Rectangle::get_height() const -> double {
         return height;
     }
 
-    const Point& Rectangle::get_center() const {
+    auto Rectangle::get_center() const -> const Point& {
         return center;
     }
 }

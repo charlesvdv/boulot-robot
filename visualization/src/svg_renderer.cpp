@@ -1,11 +1,12 @@
-#include <visualization/svg.hpp>
+#include "svg_renderer.hpp"
 
 #include <sstream>
+#include <utility>
 
 namespace visualization::render {
 
-    SVGRenderer::SVGRenderer(const std::string name, double width, double height):
-        name(name), width(width), height(height) {}
+    SVGRenderer::SVGRenderer(std::string name, double width, double height):
+        name(std::move(name)), width(width), height(height) {}
 
     void SVGRenderer::add_line(const geometry::Line& line) {
         XMLNode node = XMLNode::Builder("line")
@@ -40,7 +41,7 @@ namespace visualization::render {
         nodes.push_back(node);
     }
     
-    std::string SVGRenderer::render() const {
+    auto SVGRenderer::render() const -> std::string {
         std::stringstream svg_built;
 
         svg_built << "<svg width=\"" << width << "\" height=\"" << height << "\">\n";

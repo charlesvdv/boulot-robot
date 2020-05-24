@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include <utility>
 
 #include "map_impl.hpp"
 
@@ -17,7 +18,7 @@ namespace pathplanning::map {
     MapImpl::MapImpl(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles):
             map(build_map(dimension, obstacles)) {}
 
-    bool MapImpl::is_point_in_obstacle(const geometry::Point& point) const {
+    auto MapImpl::is_point_in_obstacle(const geometry::Point& point) const -> bool {
         if (!is_point_in_map(point)) {
             throw std::logic_error("point not in map");
         }
@@ -25,7 +26,7 @@ namespace pathplanning::map {
         return is_point_in_obstacle_recursive(map, point);
     }
 
-    bool MapImpl::is_point_in_obstacle_recursive(const QuadtreeNode& node, const geometry::Point& point) const {
+    auto MapImpl::is_point_in_obstacle_recursive(const QuadtreeNode& node, const geometry::Point& point) const -> bool {
         if (node.get_type() == quadtree::NodeType::LEAF) {
             return node.get_leaf_value() == ZoneStatus::OBSTACLE;
         } 
@@ -49,7 +50,7 @@ namespace pathplanning::map {
         throw std::logic_error("unkown node type");
     }
 
-    bool MapImpl::is_point_in_map(const geometry::Point& point) const {
+    auto MapImpl::is_point_in_map(const geometry::Point& point) const -> bool {
         const quadtree::BoundingBox& map_rect = map.get_bounding_box();
         if (point.get_x() < map_rect.get_left_line() || point.get_y() < map_rect.get_bottom_line()) {
             return false;
@@ -62,23 +63,23 @@ namespace pathplanning::map {
         return true;
     }
 
-    QuadtreeRoot MapImpl::build_map(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles) {
+    auto MapImpl::build_map(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles) -> QuadtreeRoot {
         geometry::Point origin(0.0, 0.0);
         geometry::Point opposite(dimension.get_length(), dimension.get_width());
         QuadtreeRoot root(quadtree::BoundingBox(origin, opposite), ZoneStatus::FREE);
         
-        for (auto obstacle: obstacles) {
+        for (const auto& obstacle: obstacles) {
             add_obstacle_to_map(root, obstacle, dimension.get_precision());
         }
 
         return root;
     }
 
-    void MapImpl::add_obstacle_to_map(QuadtreeRoot& root, std::shared_ptr<Obstacle> obstacle, double precision) {
+    void MapImpl::add_obstacle_to_map(QuadtreeRoot& root, const std::shared_ptr<Obstacle>& obstacle, double precision) {
         obstacle_refinement(root, obstacle, precision);
     }
 
-    void MapImpl::obstacle_refinement(QuadtreeNode& node, std::shared_ptr<Obstacle> obstacle, double precision) {
+    void MapImpl::obstacle_refinement(QuadtreeNode& node, const std::shared_ptr<Obstacle>& obstacle, double precision) {
         if (node.get_bounding_box().get_area() < precision) {
             base_case_obstacle_refinement(node, obstacle);
             return;
@@ -87,7 +88,7 @@ namespace pathplanning::map {
         recursive_case_obstacle_refinement(node, obstacle, precision);
     }
 
-    void MapImpl::base_case_obstacle_refinement(QuadtreeNode& node, std::shared_ptr<Obstacle> obstacle) {
+    void MapImpl::base_case_obstacle_refinement(QuadtreeNode& node, const std::shared_ptr<Obstacle>& obstacle) {
         SurfaceRelationship obstacle_relationship = obstacle->get_relation_with_zone(node.get_bounding_box());
 
         if (obstacle_relationship == SurfaceRelationship::DISJOINT) {
@@ -103,7 +104,7 @@ namespace pathplanning::map {
         }
     }
 
-    void MapImpl::recursive_case_obstacle_refinement(QuadtreeNode& node, std::shared_ptr<Obstacle> obstacle, double precision) {
+    void MapImpl::recursive_case_obstacle_refinement(QuadtreeNode& node, const std::shared_ptr<Obstacle>& obstacle, double precision) {
         SurfaceRelationship obstacle_relationship = obstacle->get_relation_with_zone(node.get_bounding_box());
 
         if (obstacle_relationship == SurfaceRelationship::DISJOINT) {

@@ -6,7 +6,7 @@ namespace pathplanning::map {
     RectangleObstacle::RectangleObstacle(const geometry::Point& corner, const geometry::Point& opposite_corner):
         geometry::StraightRectangle(corner, opposite_corner) {}
 
-    SurfaceRelationship RectangleObstacle::get_relation_with_zone(const geometry::StraightRectangle& rectangle) const {
+    auto RectangleObstacle::get_relation_with_zone(const geometry::StraightRectangle& rectangle) const -> SurfaceRelationship {
         if (contains(rectangle)) {
             return SurfaceRelationship::CONTAINS;
         }  else if (contained(rectangle)) {
@@ -17,7 +17,7 @@ namespace pathplanning::map {
         return SurfaceRelationship::DISJOINT;
     }
 
-    bool RectangleObstacle::contains(const geometry::StraightRectangle& rectangle) const {
+    auto RectangleObstacle::contains(const geometry::StraightRectangle& rectangle) const -> bool {
         if (get_left_line() < rectangle.get_left_line() && get_right_line() > rectangle.get_right_line() &&
                 get_bottom_line() < rectangle.get_bottom_line() && get_top_line() > rectangle.get_top_line()) {
             return true;
@@ -25,7 +25,7 @@ namespace pathplanning::map {
         return false;
     }
 
-    bool RectangleObstacle::contained(const geometry::StraightRectangle& rectangle) const {
+    auto RectangleObstacle::contained(const geometry::StraightRectangle& rectangle) const -> bool {
         if (rectangle.get_left_line() < get_left_line() && rectangle.get_right_line() > get_right_line() && 
             rectangle.get_bottom_line() < get_bottom_line() && rectangle.get_top_line() > get_top_line()) {
                 return true;
@@ -33,7 +33,7 @@ namespace pathplanning::map {
         return false;
     }
 
-    bool RectangleObstacle::overlap(const geometry::StraightRectangle& rectangle) const {
+    auto RectangleObstacle::overlap(const geometry::StraightRectangle& rectangle) const -> bool {
         if (get_right_line() <= rectangle.get_left_line() || get_left_line() >= rectangle.get_right_line()) {
             // If x coordinates don't cross, it's impossible to have an overlap
             return false;

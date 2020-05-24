@@ -6,11 +6,11 @@ namespace visualization::geometry {
         center(center), radius(radius) {
     }
 
-    double Circle::get_radius() const {
+    auto Circle::get_radius() const -> double {
         return radius;
     }
     
-    const Point& Circle::get_center() const {
+    auto Circle::get_center() const -> const Point& {
         return center;
     }
 }

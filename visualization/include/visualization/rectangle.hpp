@@ -8,9 +8,9 @@ namespace visualization::geometry {
     public:
         Rectangle(double width, double height, const Point& center);
 
-        double get_width() const;
-        double get_height() const;
-        const Point& get_center() const;
+        auto get_width() const -> double;
+        auto get_height() const -> double;
+        auto get_center() const -> const Point&;
     private:
         double width;
         double height;

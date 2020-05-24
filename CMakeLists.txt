@@ -16,6 +16,18 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(Catch2)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+message(STATUS "Looking for clang-tidy")
+find_program(CLANG_TIDY NAMES clang-tidy)
+
+if (CLANG_TIDY)
+    message(STATUS "Looking for clang-tidy - found ${CLANG_TIDY}")
+    set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY}")
+else()
+    message(STATUS "Looking for clang-tidy - not found")
+endif()
+
 add_subdirectory("path-planning")
 add_subdirectory("robotlib")
 add_subdirectory("io-interface")
