@@ -17,7 +17,7 @@ jobs:
       run: sudo apt install clang-tools
 
     - name: Init build
-      run: scan-build cmake -S . -B build-scan -GNinja
+      run: scan-build cmake -S . -B build-scan
 
     - name: Build
       run: scan-build -o build-scan/scan-result cmake --build build-scan
