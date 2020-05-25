@@ -1,6 +1,7 @@
 # boulot-robot
 
 ![CI](https://github.com/charlesvdv/boulot-robot/workflows/CI/badge.svg)
+![Static analysis](https://github.com/charlesvdv/boulot-robot/workflows/Static%20analysis/badge.svg?branch=master)
 
 ## Building
 
