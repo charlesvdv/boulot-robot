@@ -10,7 +10,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Init
+    - name: Setup environment
+      run: sudo apt install clang-tidy
+
+    - name: Init build
       run: cmake -S . -B build
 
     - name: Build
