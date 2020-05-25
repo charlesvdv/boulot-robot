@@ -12,9 +12,28 @@ include(FetchContent)
 FetchContent_Declare(
     Catch2
     GIT_REPOSITORY https://github.com/catchorg/Catch2.git
-    GIT_TAG        v2.12.1
+    GIT_TAG v2.12.1
 )
 FetchContent_MakeAvailable(Catch2)
+
+FetchContent_Declare(
+    bilkemodules
+    GIT_REPOSITORY https://github.com/bilke/cmake-modules
+    GIT_TAG 0503702f2ef733aa8f6a0c2015db89b085c5ac57
+)
+FetchContent_GetProperties(bilkemodules)
+if (NOT bilkemodules_POPULATED)
+    FetchContent_Populate(bilkemodules)
+
+    list(APPEND CMAKE_MODULE_PATH "${bilkemodules_SOURCE_DIR}")
+endif()
+
+option(CODE_COVERAGE "Enable code coverage" OFF)
+if (CODE_COVERAGE)
+    set(CMAKE_BUILD_TYPE "Debug")
+    include(CodeCoverage)
+    append_coverage_compiler_flags()
+endif()
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
