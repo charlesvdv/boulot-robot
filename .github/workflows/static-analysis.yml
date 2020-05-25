@@ -23,5 +23,5 @@ jobs:
       run: scan-build -o build-scan/scan-result cmake --build build-scan
 
     - name: Check if there is errors or warnings
-      # When the static analysis is successful, the `scan-result` directory should be empty.
-      run: '[ "$(ls -A build-scan/scan-result)" ] && exit 1'
+      # When the static analysis is successful, the `scan-result` directory is empty.
+      run: '[ -z "$(ls -A build-scan/scan-result)" ]'
