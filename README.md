@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/charlesvdv/boulot-robot/workflows/CI/badge.svg)
 ![Static analysis](https://github.com/charlesvdv/boulot-robot/workflows/Static%20analysis/badge.svg?branch=master)
-[![codecov](https://codecov.io/gh/charlesvdv/boulot-robot/branch/master/graph/badge.svg)](https://codecov.io/gh/charlesvdv/boulot-robot)
+![[codecov](https://codecov.io/gh/charlesvdv/boulot-robot/branch/master/graph/badge.svg)](https://codecov.io/gh/charlesvdv/boulot-robot)
 
 ## Building
 
