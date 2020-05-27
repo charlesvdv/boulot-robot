@@ -30,7 +30,6 @@ namespace pathplanning::geometry {
     private:
         Point bottom_left_corner;
         Point top_right_corner;
-};  
+    };  
     
-
 }

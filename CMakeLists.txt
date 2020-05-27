@@ -47,6 +47,16 @@ else()
     message(STATUS "Looking for clang-tidy - not found")
 endif()
 
+message(STATUS "Looking for clang-format")
+find_program(CLANG_FORMAT NAMES clang-format)
+
+if (CLANG_FORMAT)
+    message(STATUS "Looking for clang-format - found ${CLANG_FORMAT}")
+    include(.cmake/check-format.cmake)
+else()
+    message(STATUS "Looking for clang-format - not found")
+endif()
+
 add_subdirectory("path-planning")
 add_subdirectory("robotlib")
 add_subdirectory("io-interface")

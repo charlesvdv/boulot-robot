@@ -1,12 +1,11 @@
-#include <cmath>
-
-#include <path-planning/point.hpp>
 #include "math_utils.hpp"
+
+#include <cmath>
+#include <path-planning/point.hpp>
 
 namespace pathplanning::geometry {
 
-    Point::Point(double x, double y):
-        x(x), y(y) {}
+    Point::Point(double x, double y): x(x), y(y) {}
 
     auto Point::operator==(const Point& other) const -> bool {
         return math::almost_equal(x, other.x) && math::almost_equal(y, other.y);
