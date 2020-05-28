@@ -14,7 +14,6 @@ add_custom_target(
     -style=file 
     -output-replacements-xml
     ${ALL_CXX_SOURCE_FILES}
-    -verbose
     | tee ${CMAKE_BINARY_DIR}/check_format_file.txt | grep -c "replacement " |
     tr -d "[:cntrl:]" && echo " replacements necessary"
     COMMAND ! grep -c "replacement "

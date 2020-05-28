@@ -1,8 +1,6 @@
 Language: Cpp
 
-#Trick to have access modifiers with same indent of class 
 AccessModifierOffset: -4
-
 AlignAfterOpenBracket: DontAlign
 AlignConsecutiveAssignments: false
 AlignConsecutiveDeclarations: false
@@ -11,9 +9,11 @@ AlignEscapedNewlines: DontAlign
 AlignTrailingComments: false
 AllowAllArgumentsOnNextLine: true
 AllowAllConstructorInitializersOnNextLine: true  
-AllowAllParametersOfDeclarationOnNextLine: true  
-AllowShortBlocksOnASingleLine: true
+AllowAllParametersOfDeclarationOnNextLine: true 
+#Change in v10
+AllowShortBlocksOnASingleLine: true 
 AllowShortCaseLabelsOnASingleLine: false
+#Change in v10
 AllowShortFunctionsOnASingleLine: Empty 
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
@@ -26,6 +26,7 @@ BreakBeforeBraces: Custom
 BraceWrapping:
     AfterCaseLabel: false
     AfterClass: true
+    #Change in v10
     AfterControlStatement: false
     AfterEnum: false
     AfterFunction: false
@@ -45,24 +46,20 @@ BreakBeforeTernaryOperators: false
 BreakConstructorInitializers: AfterColon
 BreakInheritanceList: AfterColon
 BreakStringLiterals: false
-
-#Maybe change this value
 ColumnLimit: 120
-
 CompactNamespaces: false
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ConstructorInitializerIndentWidth: 4  
-
-#Maybe change this value
-ContinuationIndentWidth: 8  
-
+ContinuationIndentWidth: 4  
 Cpp11BracedListStyle: true 
+#Add wit v10
 #DeriveLineEnding: true  
 DerivePointerAlignment: true
 DisableFormat: false
 FixNamespaceComments: false  
 IncludeBlocks: Regroup
 IndentCaseLabels: true
+#Add wit v10
 #IndentGotoLabels: true
 IndentWidth: 4
 IndentWrappedFunctionNames: true
@@ -81,12 +78,14 @@ SpaceBeforeCtorInitializerColon: false
 SpaceBeforeInheritanceColon: false
 SpaceBeforeParens: ControlStatements
 SpaceBeforeRangeBasedForLoopColon: false
+#Add wit v10
 #SpaceBeforeSquareBrackets: false
 #SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 0
 SpacesInAngles: false
 SpacesInCStyleCastParentheses: false
+#Add wit v10
 #SpacesInConditionalStatement: false
 SpacesInContainerLiterals: false
 SpacesInParentheses: false
