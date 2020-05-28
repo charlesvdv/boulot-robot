@@ -77,7 +77,7 @@ namespace pathplanning::quadtree {
     private:
         void validate() const {
             if (!(top_right_value.has_value() && top_left_value.has_value() && bottom_left_value.has_value() &&
-                        bottom_right_value.has_value())) {
+                    bottom_right_value.has_value())) {
                 throw std::invalid_argument("Branches::Builder must be filled completely");
             }
         }
@@ -157,11 +157,11 @@ namespace pathplanning::quadtree {
             geometry::Point split_point = info.get_splitting_point();
             Node<T> top_left(BoundingBox(split_point, bounding_box.get_top_left_corner()), info.get_top_left_value());
             Node<T> top_right(
-                    BoundingBox(split_point, bounding_box.get_top_right_corner()), info.get_top_right_value());
+                BoundingBox(split_point, bounding_box.get_top_right_corner()), info.get_top_right_value());
             Node<T> bottom_left(
-                    BoundingBox(split_point, bounding_box.get_bottom_left_corner()), info.get_bottom_left_value());
+                BoundingBox(split_point, bounding_box.get_bottom_left_corner()), info.get_bottom_left_value());
             Node<T> bottom_right(
-                    BoundingBox(split_point, bounding_box.get_bottom_right_corner()), info.get_bottom_right_value());
+                BoundingBox(split_point, bounding_box.get_bottom_right_corner()), info.get_bottom_right_value());
 
             // std::make_shared don't work with friend class so we need to create the pointer ourself and wrap the
             // pointer manually in std::shared_ptr. It should be safe though as the quadtree::Branches constructor does
@@ -231,5 +231,5 @@ namespace pathplanning::quadtree {
 
         friend class Node<T>;
     };
-    
+
 }

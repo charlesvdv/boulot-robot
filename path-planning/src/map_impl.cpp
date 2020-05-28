@@ -64,7 +64,7 @@ namespace pathplanning::map {
     }
 
     auto MapImpl::build_map(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles)
-            -> QuadtreeRoot {
+        -> QuadtreeRoot {
         geometry::Point origin(0.0, 0.0);
         geometry::Point opposite(dimension.get_length(), dimension.get_width());
         QuadtreeRoot root(quadtree::BoundingBox(origin, opposite), ZoneStatus::FREE);
@@ -106,7 +106,7 @@ namespace pathplanning::map {
     }
 
     void MapImpl::recursive_case_obstacle_refinement(
-            QuadtreeNode& node, const std::shared_ptr<Obstacle>& obstacle, double precision) {
+        QuadtreeNode& node, const std::shared_ptr<Obstacle>& obstacle, double precision) {
         SurfaceRelationship obstacle_relationship = obstacle->get_relation_with_zone(node.get_bounding_box());
 
         if (obstacle_relationship == SurfaceRelationship::DISJOINT) {

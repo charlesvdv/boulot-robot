@@ -1,8 +1,8 @@
 #pragma once
 
-#include <vector>
-#include <utility>
 #include <string>
+#include <utility>
+#include <vector>
 
 namespace visualization::render {
 
@@ -11,7 +11,8 @@ namespace visualization::render {
         class Builder;
 
         auto to_string() const -> const std::string;
-    private: 
+
+    private:
         XMLNode(std::string&& tag, std::vector<std::pair<std::string, std::string>>&& attributes);
 
         std::string tag;
@@ -19,16 +20,16 @@ namespace visualization::render {
     };
 
     class XMLNode::Builder {
-    public: 
+    public:
         Builder(std::string tag);
 
         auto with_attribute(const std::string& name, const std::string& value) -> Builder&;
-        
+
         auto build() -> XMLNode;
-    private: 
+
+    private:
         std::string tag;
         std::vector<std::pair<std::string, std::string>> attributes;
     };
 
 }
-

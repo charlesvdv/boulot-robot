@@ -11,10 +11,11 @@ namespace visualization::geometry {
         auto get_width() const -> double;
         auto get_height() const -> double;
         auto get_center() const -> const Point&;
+
     private:
         double width;
         double height;
         Point center;
     };
-    
+
 }

@@ -1,5 +1,4 @@
 #include <catch2/catch.hpp>
-
 #include <path-planning/obstacle.hpp>
 
 namespace map = pathplanning::map;

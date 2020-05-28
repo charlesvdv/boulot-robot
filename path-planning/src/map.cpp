@@ -6,7 +6,7 @@
 namespace pathplanning::map {
 
     auto Map::make(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles)
-            -> std::unique_ptr<Map> {
+        -> std::unique_ptr<Map> {
         return std::make_unique<MapImpl>(dimension, obstacles);
     }
 

@@ -8,12 +8,12 @@ namespace pathplanning::geometry {
 
     StraightRectangle::StraightRectangle(const Point& corner, const Point& opposite_corner):
         bottom_left_corner(
-                std::min(corner.get_x(), opposite_corner.get_x()), std::min(corner.get_y(), opposite_corner.get_y())),
+            std::min(corner.get_x(), opposite_corner.get_x()), std::min(corner.get_y(), opposite_corner.get_y())),
         top_right_corner(
-                std::max(corner.get_x(), opposite_corner.get_x()), std::max(corner.get_y(), opposite_corner.get_y())) {
+            std::max(corner.get_x(), opposite_corner.get_x()), std::max(corner.get_y(), opposite_corner.get_y())) {
         // Just make sure we have a rectangle and not a line..
         if (math::almost_equal(corner.get_x(), opposite_corner.get_x()) ||
-                math::almost_equal(corner.get_y(), opposite_corner.get_y())) {
+            math::almost_equal(corner.get_y(), opposite_corner.get_y())) {
             throw std::invalid_argument("not a rectangle");
         }
     }

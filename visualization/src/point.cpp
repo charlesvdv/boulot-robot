@@ -2,8 +2,7 @@
 
 namespace visualization::geometry {
 
-    Point::Point(double x, double y):
-        x(x), y(y) {}
+    Point::Point(double x, double y): x(x), y(y) {}
 
     auto Point::get_x() const -> double {
         return x;

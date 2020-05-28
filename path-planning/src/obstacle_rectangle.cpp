@@ -8,7 +8,7 @@ namespace pathplanning::map {
         geometry::StraightRectangle(corner, opposite_corner) {}
 
     auto RectangleObstacle::get_relation_with_zone(const geometry::StraightRectangle& rectangle) const
-            -> SurfaceRelationship {
+        -> SurfaceRelationship {
         if (contains(rectangle)) {
             return SurfaceRelationship::CONTAINS;
         } else if (contained(rectangle)) {
@@ -21,7 +21,7 @@ namespace pathplanning::map {
 
     auto RectangleObstacle::contains(const geometry::StraightRectangle& rectangle) const -> bool {
         if (get_left_line() < rectangle.get_left_line() && get_right_line() > rectangle.get_right_line() &&
-                get_bottom_line() < rectangle.get_bottom_line() && get_top_line() > rectangle.get_top_line()) {
+            get_bottom_line() < rectangle.get_bottom_line() && get_top_line() > rectangle.get_top_line()) {
             return true;
         }
         return false;
@@ -29,7 +29,7 @@ namespace pathplanning::map {
 
     auto RectangleObstacle::contained(const geometry::StraightRectangle& rectangle) const -> bool {
         if (rectangle.get_left_line() < get_left_line() && rectangle.get_right_line() > get_right_line() &&
-                rectangle.get_bottom_line() < get_bottom_line() && rectangle.get_top_line() > get_top_line()) {
+            rectangle.get_bottom_line() < get_bottom_line() && rectangle.get_top_line() > get_top_line()) {
             return true;
         }
         return false;

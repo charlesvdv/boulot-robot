@@ -10,9 +10,10 @@ namespace visualization::geometry {
 
         auto get_start() const -> const Point&;
         auto get_end() const -> const Point&;
+
     private:
         const Point start;
         const Point end;
     };
-    
+
 }

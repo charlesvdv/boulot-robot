@@ -1,17 +1,18 @@
 #pragma once
 
-#include <memory>
-#include <string>
-
+#include "circle.hpp"
 #include "line.hpp"
 #include "rectangle.hpp"
-#include "circle.hpp"
+
+#include <memory>
+#include <string>
 
 namespace visualization::render {
 
     class Renderer {
     public:
-        static auto make_svg_renderer(const std::string& name, double width, double height) -> std::unique_ptr<Renderer>;
+        static auto make_svg_renderer(const std::string& name, double width, double height)
+            -> std::unique_ptr<Renderer>;
 
         virtual ~Renderer() = default;
 
@@ -20,5 +21,5 @@ namespace visualization::render {
         virtual void add_circle(const geometry::Circle& circle) = 0;
         virtual auto render() const -> std::string = 0;
     };
-    
+
 }

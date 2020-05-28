@@ -21,5 +21,5 @@ namespace pathplanning::map {
         const geometry::Point center;
         double radius;
     };
-    
+
 }

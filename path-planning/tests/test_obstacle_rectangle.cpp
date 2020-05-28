@@ -1,12 +1,12 @@
 #include <catch2/catch.hpp>
-
 #include <path-planning/obstacle.hpp>
 
 namespace map = pathplanning::map;
 namespace geo = pathplanning::geometry;
 
 TEST_CASE("Verify rectangle obstacle contains method") {
-    std::unique_ptr<map::Obstacle>  rectangleObstacle = map::Obstacle::make_rectangle(geo::Point(10, 10), geo::Point(20, 20));
+    std::unique_ptr<map::Obstacle> rectangleObstacle =
+        map::Obstacle::make_rectangle(geo::Point(10, 10), geo::Point(20, 20));
 
     SECTION("disjoint zone") {
         geo::StraightRectangle zone(geo::Point(0, 0), geo::Point(5, 5));

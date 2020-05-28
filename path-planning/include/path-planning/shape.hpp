@@ -1,8 +1,8 @@
 #pragma once
 
-#include <utility>
-
 #include "point.hpp"
+
+#include <utility>
 
 namespace pathplanning::geometry {
 
@@ -22,7 +22,7 @@ namespace pathplanning::geometry {
 
         auto get_width() const -> double;
         auto get_height() const -> double;
-        
+
         auto get_center() const -> Point;
 
         auto get_area() const -> double;
@@ -30,6 +30,6 @@ namespace pathplanning::geometry {
     private:
         Point bottom_left_corner;
         Point top_right_corner;
-    };  
-    
+    };
+
 }

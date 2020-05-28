@@ -10,9 +10,10 @@ namespace visualization::geometry {
 
         auto get_radius() const -> double;
         auto get_center() const -> const Point&;
+
     private:
         Point center;
         double radius;
     };
-    
+
 }
