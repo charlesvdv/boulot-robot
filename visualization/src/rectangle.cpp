@@ -3,8 +3,7 @@
 namespace visualization::geometry {
 
     Rectangle::Rectangle(double width, double height, const Point& center):
-        width(width), height(height), center(center) {
-    }
+        width(width), height(height), center(center) {}
 
     auto Rectangle::get_width() const -> double {
         return width;

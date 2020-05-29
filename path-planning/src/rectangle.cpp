@@ -1,20 +1,19 @@
-#include <algorithm>
-#include <stdexcept>
-
-#include <path-planning/shape.hpp>
-
 #include "math_utils.hpp"
+
+#include <algorithm>
+#include <path-planning/shape.hpp>
+#include <stdexcept>
 
 namespace pathplanning::geometry {
 
     StraightRectangle::StraightRectangle(const Point& corner, const Point& opposite_corner):
-        bottom_left_corner(std::min(corner.get_x(), opposite_corner.get_x()), 
-            std::min(corner.get_y(), opposite_corner.get_y())), 
-        top_right_corner(std::max(corner.get_x(), opposite_corner.get_x()), 
-                std::max(corner.get_y(), opposite_corner.get_y())) {
+        bottom_left_corner(
+            std::min(corner.get_x(), opposite_corner.get_x()), std::min(corner.get_y(), opposite_corner.get_y())),
+        top_right_corner(
+            std::max(corner.get_x(), opposite_corner.get_x()), std::max(corner.get_y(), opposite_corner.get_y())) {
         // Just make sure we have a rectangle and not a line..
-        if (math::almost_equal(corner.get_x(), opposite_corner.get_x()) || 
-                math::almost_equal(corner.get_y(), opposite_corner.get_y())) {
+        if (math::almost_equal(corner.get_x(), opposite_corner.get_x()) ||
+            math::almost_equal(corner.get_y(), opposite_corner.get_y())) {
             throw std::invalid_argument("not a rectangle");
         }
     }
@@ -60,8 +59,8 @@ namespace pathplanning::geometry {
     }
 
     auto StraightRectangle::get_center() const -> Point {
-        double x = (get_right_line() + get_left_line())/2;
-        double y = (get_top_line() + get_bottom_line())/2;
+        double x = (get_right_line() + get_left_line()) / 2;
+        double y = (get_top_line() + get_bottom_line()) / 2;
         return Point(x, y);
     }
 

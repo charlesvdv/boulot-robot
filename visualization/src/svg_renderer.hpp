@@ -1,10 +1,10 @@
 #pragma once
 
+#include "xml_node.hpp"
+
 #include <string>
 #include <vector>
-
 #include <visualization/renderer.hpp>
-#include "xml_node.hpp"
 
 namespace visualization::render {
 
@@ -17,6 +17,7 @@ namespace visualization::render {
         void add_circle(const geometry::Circle& circle) override;
 
         auto render() const -> std::string override;
+
     private:
         double width;
         double height;

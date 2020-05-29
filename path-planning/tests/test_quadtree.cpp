@@ -1,6 +1,6 @@
-#include <catch2/catch.hpp>
-
 #include "quadtree.hpp"
+
+#include <catch2/catch.hpp>
 
 using namespace pathplanning;
 namespace geo = pathplanning::geometry;
@@ -20,10 +20,10 @@ TEST_CASE("Test basic quadtree feature") {
         REQUIRE(root.get_type() == quadtree::NodeType::LEAF);
 
         quadtree::SplittingNodeInfo<TestData> split_info = quadtree::SplittingNodeInfo<TestData>(geo::Point(100, 100))
-            .with_top_left_value(TestData(true))
-            .with_top_right_value(TestData(true))
-            .with_bottom_left_value(TestData(false))
-            .with_bottom_right_value(TestData(false));
+                                                               .with_top_left_value(TestData(true))
+                                                               .with_top_right_value(TestData(true))
+                                                               .with_bottom_left_value(TestData(false))
+                                                               .with_bottom_right_value(TestData(false));
 
         root.split(split_info);
         REQUIRE(root.get_type() == quadtree::NodeType::BRANCH);
@@ -45,10 +45,10 @@ TEST_CASE("Test basic quadtree feature") {
         REQUIRE(root.get_leaf_value().flag == false);
 
         quadtree::SplittingNodeInfo<TestData> split_info = quadtree::SplittingNodeInfo<TestData>(geo::Point(100, 100))
-            .with_top_left_value(TestData(true))
-            .with_top_right_value(TestData(true))
-            .with_bottom_left_value(TestData(false))
-            .with_bottom_right_value(TestData(false));
+                                                               .with_top_left_value(TestData(true))
+                                                               .with_top_right_value(TestData(true))
+                                                               .with_bottom_left_value(TestData(false))
+                                                               .with_bottom_right_value(TestData(false));
 
         root.split(split_info);
         REQUIRE(root.get_type() == quadtree::NodeType::BRANCH);

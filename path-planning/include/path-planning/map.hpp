@@ -1,10 +1,10 @@
 #pragma once
 
+#include "obstacle.hpp"
+#include "point.hpp"
+
 #include <memory>
 #include <vector>
-
-#include "point.hpp"
-#include "obstacle.hpp"
 
 namespace pathplanning::map {
 
@@ -30,7 +30,8 @@ namespace pathplanning::map {
     public:
         virtual ~Map() = default;
 
-        static auto make(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles) -> std::unique_ptr<Map>;
+        static auto make(const MapDimension& dimension, const std::vector<std::shared_ptr<Obstacle>>& obstacles)
+            -> std::unique_ptr<Map>;
 
         virtual auto is_point_in_obstacle(const geometry::Point& point) const -> bool = 0;
     };

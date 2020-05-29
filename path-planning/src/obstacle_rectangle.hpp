@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 
 #include <path-planning/obstacle.hpp>
 #include <path-planning/point.hpp>
