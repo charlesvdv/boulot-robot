@@ -57,7 +57,4 @@ else()
     message(STATUS "Looking for clang-format - not found")
 endif()
 
-add_subdirectory("path-planning")
-add_subdirectory("robotlib")
-add_subdirectory("io-interface")
-add_subdirectory("visualization")
+add_subdirectory("libs")
