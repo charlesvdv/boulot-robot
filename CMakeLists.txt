@@ -52,7 +52,7 @@ find_program(CLANG_FORMAT NAMES clang-format)
 
 if (CLANG_FORMAT)
     message(STATUS "Looking for clang-format - found ${CLANG_FORMAT}")
-    include(.cmake/check-format.cmake)
+    include(cmake/CheckFormat.cmake)
 else()
     message(STATUS "Looking for clang-format - not found")
 endif()

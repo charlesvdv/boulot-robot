@@ -1,5 +1,3 @@
-Language: Cpp
-
 AccessModifierOffset: -4
 AlignAfterOpenBracket: DontAlign
 AlignConsecutiveAssignments: false
@@ -10,14 +8,14 @@ AlignTrailingComments: false
 AllowAllArgumentsOnNextLine: true
 AllowAllConstructorInitializersOnNextLine: true  
 AllowAllParametersOfDeclarationOnNextLine: true 
-#Change in v10
+#TODO(jonathan): Change in v10
 AllowShortBlocksOnASingleLine: true 
 AllowShortCaseLabelsOnASingleLine: false
-#Change in v10
+#TODO(jonathan): Change in v10
 AllowShortFunctionsOnASingleLine: Empty 
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
-AlwaysBreakAfterReturnType: TopLevelDefinitions
+AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
 AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: true
@@ -26,7 +24,7 @@ BreakBeforeBraces: Custom
 BraceWrapping:
     AfterCaseLabel: false
     AfterClass: true
-    #Change in v10
+    #TODO(jonathan): Change in v10
     AfterControlStatement: false
     AfterEnum: false
     AfterFunction: false
@@ -52,14 +50,14 @@ ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ConstructorInitializerIndentWidth: 4  
 ContinuationIndentWidth: 4  
 Cpp11BracedListStyle: true 
-#Add wit v10
+#TODO(jonathan): Add in v10
 #DeriveLineEnding: true  
 DerivePointerAlignment: true
 DisableFormat: false
 FixNamespaceComments: false  
 IncludeBlocks: Regroup
 IndentCaseLabels: true
-#Add wit v10
+#TODO(jonathan): Add in v10
 #IndentGotoLabels: true
 IndentWidth: 4
 IndentWrappedFunctionNames: true
@@ -78,14 +76,14 @@ SpaceBeforeCtorInitializerColon: false
 SpaceBeforeInheritanceColon: false
 SpaceBeforeParens: ControlStatements
 SpaceBeforeRangeBasedForLoopColon: false
-#Add wit v10
+#TODO(jonathan): Add in v10
 #SpaceBeforeSquareBrackets: false
 #SpaceInEmptyBlock: false
 SpaceInEmptyParentheses: false
-SpacesBeforeTrailingComments: 0
+SpacesBeforeTrailingComments: 1
 SpacesInAngles: false
 SpacesInCStyleCastParentheses: false
-#Add wit v10
+#TODO(jonathan): Add in v10
 #SpacesInConditionalStatement: false
 SpacesInContainerLiterals: false
 SpacesInParentheses: false

@@ -6,8 +6,7 @@
 
 using namespace visualization;
 
-int
-    main() {
+int main() {
     std::unique_ptr<render::Renderer> svg_content = render::Renderer::make_svg_renderer("test", 100, 100);
 
     geometry::Point start = geometry::Point(80, 80);
