@@ -1,6 +1,6 @@
 #pragma once
 
-#include "xml_node.hpp"
+#include "xml-node.hpp"
 
 #include <string>
 #include <vector>

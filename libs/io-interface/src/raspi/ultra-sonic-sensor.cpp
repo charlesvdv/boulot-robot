@@ -1,4 +1,4 @@
-#include <io-interface/ultra_sonic_sensor.hpp>
+#include <io-interface/ultra-sonic-sensor.hpp>
 
 namespace iointerface::sensor {
 

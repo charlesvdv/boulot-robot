@@ -1,4 +1,4 @@
-#include <robotlib/proximity_handler.hpp>
+#include <robotlib/proximity-handler.hpp>
 
 namespace robotlib::proximity_handler {
 

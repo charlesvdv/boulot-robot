@@ -1,5 +1,5 @@
-#include "obstacle_circle.hpp"
-#include "obstacle_rectangle.hpp"
+#include "obstacle-circle.hpp"
+#include "obstacle-rectangle.hpp"
 
 #include <path-planning/obstacle.hpp>
 

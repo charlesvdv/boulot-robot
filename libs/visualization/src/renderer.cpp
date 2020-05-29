@@ -1,4 +1,4 @@
-#include "svg_renderer.hpp"
+#include "svg-renderer.hpp"
 
 #include <visualization/renderer.hpp>
 

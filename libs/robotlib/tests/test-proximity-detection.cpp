@@ -1,5 +1,5 @@
 #include <catch2/catch.hpp>
-#include <robotlib/proximity_handler.hpp>
+#include <robotlib/proximity-handler.hpp>
 
 using namespace iointerface::sensor;
 using namespace robotlib::proximity_handler;

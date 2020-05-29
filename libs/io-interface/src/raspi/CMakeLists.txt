@@ -1,5 +1,5 @@
 add_library("io-interface-raspi"
-    ultra_sonic_sensor.cpp
+    ultra-sonic-sensor.cpp
 )
 
 target_include_directories("io-interface-raspi"

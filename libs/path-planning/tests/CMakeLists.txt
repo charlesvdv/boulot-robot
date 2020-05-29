@@ -2,10 +2,10 @@
 set(CMAKE_CXX_CLANG_TIDY "")
 
 add_executable("path-planning-test"
-    test_obstacle_circle.cpp
-    test_obstacle_rectangle.cpp
-    test_quadtree.cpp
-    test_map.cpp
+    test-obstacle-circle.cpp
+    test-obstacle-rectangle.cpp
+    test-quadtree.cpp
+    test-map.cpp
     main.cpp)
 
 target_link_libraries("path-planning-test"

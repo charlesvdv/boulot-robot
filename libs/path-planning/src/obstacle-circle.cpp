@@ -1,4 +1,4 @@
-#include "obstacle_circle.hpp"
+#include "obstacle-circle.hpp"
 
 #include <cmath>
 

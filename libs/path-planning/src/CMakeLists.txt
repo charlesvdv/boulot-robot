@@ -1,12 +1,12 @@
 add_library("path-planning" 
     point.cpp
     obstacle.cpp
-    obstacle_rectangle.cpp
-    obstacle_circle.cpp
+    obstacle-rectangle.cpp
+    obstacle-circle.cpp
     rectangle.cpp
     quadtree.cpp
     map.cpp
-    map_impl.cpp
+    map-impl.cpp
 )
 
 target_include_directories("path-planning" 

@@ -1,5 +1,5 @@
 add_library(robotlib
-    proximity_handler.cpp
+    proximity-handler.cpp
 )
 
 target_link_libraries(robotlib

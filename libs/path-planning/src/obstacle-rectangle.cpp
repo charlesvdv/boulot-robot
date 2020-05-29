@@ -1,4 +1,4 @@
-#include "obstacle_rectangle.hpp"
+#include "obstacle-rectangle.hpp"
 
 #include <algorithm>
 
