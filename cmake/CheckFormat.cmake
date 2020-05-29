@@ -1,11 +1,7 @@
 set (EXCLUDE_DIR "build/")
-file(GLOB_RECURSE ALL_CXX_SOURCE_FILES *.cpp *.hpp)
-foreach (TMP_PATH ${ALL_CXX_SOURCE_FILES})
-    string (FIND ${TMP_PATH} ${EXCLUDE_DIR} EXCLUDE_DIR_FOUND)
-    if (NOT ${EXCLUDE_DIR_FOUND} EQUAL -1)
-        list (REMOVE_ITEM ALL_CXX_SOURCE_FILES ${TMP_PATH})
-    endif ()
-endforeach(TMP_PATH)
+file(GLOB_RECURSE ALL_CXX_SOURCE_FILES 
+    ${PROJECT_SOURCE_DIR}/libs/*/*.hpp 
+    ${PROJECT_SOURCE_DIR}/libs/*/*.cpp)
 
 #https://gitlab.cern.ch/Caribou/peary/commit/167da6ffcaca80666f581b1d75e00771fcaeed3a
 add_custom_target(
